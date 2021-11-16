@@ -1,0 +1,16 @@
+- year: 2021
+  kval-uppg: '/pdf/kval-2021.pdf'
+  final-uppg: '/pdf/final-2021.pdf'
+- year: 2020
+  kval-uppg: '/pdf/kval-2020.pdf'
+  kval-facit: '/pdf/kval-2020-facit.pdf'
+- year: 2019
+  kval-uppg: '/pdf/kval-2019.pdf'
+  kval-facit: '/pdf/kval-2019-facit.pdf'
+  final-uppg: '/pdf/final-2019.pdf'
+  final-facit: '/pdf/final-2019-facit.pdf'
+- year: 2018
+  kval-uppg: '/pdf/kval-2018.pdf'
+  kval-facit: '/pdf/kval-2018-facit.pdf'
+  final-uppg: '/pdf/final-2018.pdf'
+  final-facit: '/pdf/final-2018-facit.pdf'

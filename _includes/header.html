@@ -1,0 +1,13 @@
+<ul class="navigation" id="navbar">
+
+<li id="logo"><a href="{{ site.baseurl }}/"><img src="/img/logo.png"/></a></li>
+
+{% for item in site.data.navigation %}<li class="navitem{% if page.url == item.link %} active{% endif %}"><a href="{{ item.link }}">{{ item.name }}</a></li>
+{% endfor %}
+
+<li onclick="document.getElementById('navbar').classList.toggle('mobile-menu-open')" id="mobile-nav-button">
+  <div id="bar1"></div>
+  <div id="bar2"></div>
+  <div id="bar3"></div>
+</li>
+</ul>

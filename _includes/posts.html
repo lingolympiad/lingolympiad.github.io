@@ -1,0 +1,5 @@
+{% for post in site.posts limit: include.limit %}
+<h2><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
+<p>{{ post.date | date: "%Y-%m-%d" }}</p>
+{{ post.excerpt }}
+{% endfor %}

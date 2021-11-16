@@ -1,0 +1,8 @@
+# Site settings
+title: Lingolympiaden
+email: lingo@lingolympiad.org
+baseurl: ""
+url: "http://www.lingolympiad.org"
+
+# Build settings
+markdown: kramdown

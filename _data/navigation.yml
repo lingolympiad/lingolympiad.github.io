@@ -1,0 +1,10 @@
+- name: "Hem"
+  link: /
+- name: "Nyheter"
+  link: /nyheter/
+- name: "Vanliga frågor"
+  link: /faq/
+- name: "Övningsuppgifter"
+  link: /ovning/
+- name: "Kontakt"
+  link: /kontakt/

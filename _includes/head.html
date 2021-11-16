@@ -1,0 +1,11 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+  <meta name="description" content="Lingolympiaden är en tävling i lingvistik och logik för gymnasieelever. Ingen förkunskap krävs!">
+  <meta name="keywords" content="Lingolympiaden, lingvistik, IOL">
+
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+</head>

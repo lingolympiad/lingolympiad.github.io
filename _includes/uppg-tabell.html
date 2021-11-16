@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th>År</th><th>Kval</th><th>Final</th>
+  </tr>
+  {% for item in site.data.uppgifter %}
+    <tr>
+      <td>{{ item.year }}</td>
+      {% if item.kval-uppg %}
+        <td><a href="{{ item.kval-uppg }}">Uppgifter</a>{% if item.kval-facit %} & <a href="{{ item.kval-facit }}">Facit</a>{% endif %}</td>
+      {% endif %}
+      {% if item.final-uppg %}
+        <td><a href="{{ item.final-uppg }}">Uppgifter</a>{% if item.final-facit %} & <a href="{{ item.final-facit }}">Facit</a>{% endif %}</td>
+      {% endif %}
+    </tr>
+  {% endfor %}
+</table>

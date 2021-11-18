@@ -15,14 +15,14 @@ body {
 h1 {
   font-size: 2em;
   margin-bottom: 10px;
-  font-family: 'Open Sans', sans-serif;
-  color: #222;
 }
 
 h2 {
   font-size: 1em;
+}
+
+h1, h2 {
   font-family: 'Open Sans', sans-serif;
-  color: #222;
 }
 
 .divider {
@@ -47,7 +47,7 @@ th, td {
   padding: 5px 15px;
 }
 
-p, table {
+p, table, ul {
   margin-bottom: 10px;
 }
 
@@ -55,8 +55,12 @@ p, table {
   text-align: left;
 }
 
-p {
+p, h1, h2, li {
   color: #222;
+}
+
+ul {
+  list-style-position: inside;
 }
 
 .hscroll {

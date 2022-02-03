@@ -5,9 +5,7 @@ title:  Lingolympiaden
 
 Lingolympiaden är en tävling i lingvistisk problemlösning för gymnasiet. Det är gratis att delta och kräver inga särskilda förkunskaper. Kolla gärna på våra [tidigare uppgifter](ovning)!
 
-*Nu har årets kvaltävling gått av stapeln!*
-
-Vi kommer snart att ladda upp problemen, facit, och resultat.
+*Årets kvaltävling gick av stapeln 19 januari, och den är nu rättad. [Länk till resultaten](https://docs.google.com/spreadsheets/d/1Q_aRpCgt4a7oUPXu6C08xS5JOMuEiUB2XsCdEcWjYUU).*
 
 Tävligen består av två omgångar: en öppen kvaltävling följt av en finaltävling för de med bäst kvalresultat. Finalen hålls i Stockholm under en helg fylld med sociala aktiviteter, lingvistiska föreläsningar, och träning i lingvistisk problemlösning, och finalen fungerar även som svensk uttagning till den internationella lingvistikolympiaden [IOL](https://ioling.org).
 

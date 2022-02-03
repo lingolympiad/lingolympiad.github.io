@@ -4,7 +4,7 @@ title: Övningsuppgifter
 permalink: /ovning/
 ---
 
-Uppgifter och facit för Lingolympiadens kval- och finaltävlingar sedan 2018 finns i tabellen nedan. 2020 hölls ingen final.
+Uppgifterna från Lingolympiadens kval- och finaltävlingar sedan 2018 finns i tabellen nedan. 2020 hölls ingen final.
 
 {% include uppg-tabell.html %}
 

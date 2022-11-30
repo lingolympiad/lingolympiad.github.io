@@ -5,7 +5,7 @@ title:  Lingolympiaden
 
 Lingolympiaden är en tävling i lingvistisk problemlösning för gymnasiet. Det är gratis att delta och kräver inga särskilda förkunskaper. Kolla gärna på våra [tidigare uppgifter](ovning)!
 
-*Lingolympiaden och IOL är över för 2022, och vi har börjat planera för 2023!*
+Nu har anmälan öppnat för 2023! [Anmäl din skola här](https://forms.gle/5Ce6oJWSh3ctpFAg8).
 
 Tävligen består av två omgångar: en öppen kvaltävling följt av en finaltävling för de med bäst kvalresultat. Finalen hålls i Stockholm under en helg fylld med sociala aktiviteter, lingvistiska föreläsningar, och träning i lingvistisk problemlösning, och finalen fungerar även som svensk uttagning till den internationella lingvistikolympiaden [IOL](https://ioling.org).
 
@@ -32,7 +32,7 @@ Tävligen består av två omgångar: en öppen kvaltävling följt av en finalt�
   </tr>
   <tr>
     <th>När</th>
-    <td>Dec 2022 eller jan 2023</td>
+    <td>1:a februari 2023</td>
     <td>Vårterminen 2023</td>
     <td>Sommaren 2023</td>
   </tr>

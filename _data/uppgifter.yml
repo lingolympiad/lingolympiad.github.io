@@ -1,8 +1,13 @@
+- year: 2023
+  kval-uppg: '/pdf/kval-2023.pdf'
+  kval-facit: '/pdf/kval-2023-facit.pdf'
 - year: 2022
   kval-uppg: '/pdf/kval-2022.pdf'
+  kval-facit: '/pdf/kval-2022-facit.pdf'
   final-uppg: '/pdf/final-2022.pdf'
 - year: 2021
   kval-uppg: '/pdf/kval-2021.pdf'
+  kval-facit: '/pdf/kval-2021-facit.pdf'
   final-uppg: '/pdf/final-2021.pdf'
 - year: 2020
   kval-uppg: '/pdf/kval-2020.pdf'

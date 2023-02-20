@@ -38,6 +38,10 @@ a {
   font: inherit;
 }
 
+table {
+  border-collapse: collapse;
+}
+
 th {
   font-family: 'Open Sans', sans-serif;
   color: #222;

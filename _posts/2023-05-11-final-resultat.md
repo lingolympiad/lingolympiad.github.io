@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Resultat från kvaltävlingen"
+title: "Resultat från finalen"
 ---
 
 Under helgen 6–7 maj samlades de 16 som presterat bäst i årets kvaltävling för att tävla om att få representera Sverige på IOL i Bulgarien i sommar. Årets final hölls på Institutionen för lingvistik vid Stockholms universitet, och innehöll både utmanande problemlösning i par och föreläsningar med tidigare finalister. Tävlingen avslutades med ett 4 timmar långt individuellt prov på söndagen. Trots ett av våra svåraste problemset någonsin var vi djupt imponerade av finalisternas resultat!

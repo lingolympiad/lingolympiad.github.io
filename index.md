@@ -32,7 +32,7 @@ Anmälan till Lingolympiaden 2024 har öppnat! Läs mer om årets tävling och h
   </tr>
   <tr>
     <th>När</th>
-    <td>9 november 2023</td>
+    <td>8 november 2023</td>
     <td>Våren 2024</td>
     <td>Juli 2024</td>
   </tr>

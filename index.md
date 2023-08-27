@@ -5,9 +5,9 @@ title:  Lingolympiaden
 
 Lingolympiaden är en tävling i lingvistisk problemlösning för gymnasiet. Det är gratis att delta och kräver inga särskilda förkunskaper. Kolla gärna på våra [tidigare uppgifter](ovning)!
 
-Resultaten från finaltävlingen har publicerats [här]({% post_url 2023-05-11-final-resultat %})!
+Tävligen består av två omgångar: en öppen kvaltävling följt av en finaltävling för de med bäst kvalresultat. Finalen hålls i Stockholm under en helg fylld med sociala aktiviteter, lingvistiska föreläsningar, och träning i lingvistisk problemlösning. Finalen fungerar även som svensk uttagning till den internationella lingvistikolympiaden [IOL](https://ioling.org).
 
-Tävligen består av två omgångar: en öppen kvaltävling följt av en finaltävling för de med bäst kvalresultat. Finalen hålls i Stockholm under en helg fylld med sociala aktiviteter, lingvistiska föreläsningar, och träning i lingvistisk problemlösning, och finalen fungerar även som svensk uttagning till den internationella lingvistikolympiaden [IOL](https://ioling.org).
+Anmälan till Lingolympiaden 2024 har öppnat! Läs mer om årets tävling och hur du anmäler dig/din skola [här]({% post_url 2023-08-24-kval-anmalan %}).
 
 <div class="hscroll">
 
@@ -16,31 +16,31 @@ Tävligen består av två omgångar: en öppen kvaltävling följt av en finalt�
     <th> </th>
     <th>Kvaltävling</th>
     <th>Finaltävling</th>
-    <th>IOL 2023</th>
+    <th>IOL 2024</th>
   </tr>
   <tr>
     <th>Vem</th>
     <td>Alla gymnasieelever som vill</td>
     <td>De 16–20 bästa i kvalet</td>
-    <td>De 8 bästa i finalen</td>
+    <td>De 4 bästa i finalen</td>
   </tr>
   <tr>
     <th>Var</th>
     <td>På elevens egen skola</td>
     <td>Stockholm</td>
-    <td>Bulgarien</td>
+    <td>Brasília, Brasilien</td>
   </tr>
   <tr>
     <th>När</th>
-    <td>1:a februari 2023</td>
-    <td>6–7 maj 2023</td>
-    <td>21–29 juli 2023</td>
+    <td>8 november 2023</td>
+    <td>Våren 2024</td>
+    <td>Juli 2024</td>
   </tr>
 </table>
 
 </div>
 
-Lingolympiaden arrangeras i samarbete med <a href="https://www.ling.su.se/">Institutionen för Lingvistik på Stockholms universitet</a> och med stöd av Skolverket.
+Lingolympiaden arrangeras i samarbete med <a href="https://www.ling.su.se/">Institutionen för lingvistik på Stockholms universitet</a> och med stöd av Skolverket.
 
 Följ oss på [Facebook](https://www.facebook.com/lingolympiaden/) och [Instagram](https://www.instagram.com/lingolympiaden/) för regelbundna uppdateringar om Lingolympiaden.
 

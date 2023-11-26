@@ -7,7 +7,7 @@ Lingolympiaden är en tävling i lingvistisk problemlösning för gymnasiet. Det
 
 Tävligen består av två omgångar: en öppen kvaltävling följt av en finaltävling för de med bäst kvalresultat. Finalen hålls i Stockholm under en helg fylld med sociala aktiviteter, lingvistiska föreläsningar, och träning i lingvistisk problemlösning. Finalen fungerar även som svensk uttagning till den internationella lingvistikolympiaden [IOL](https://ioling.org).
 
-Kvaltävlingen i Lingolympiaden 2024 har avslutats! Vi återkommer med resultaten när vi har rättat alla prov.
+Kvaltävlingen i Lingolympiaden 2024 har avslutats, och resultaten är publicerade [här](2023/11/26/kval-resultat)!
 
 <div class="hscroll">
 

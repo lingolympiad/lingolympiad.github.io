@@ -9,6 +9,10 @@ Den som lyckades allra bäst i finalen och därmed vann Lingolympiaden 2024 är 
 
 Följande finalister har kvalificerat sig till IOL 2024:
 - Adam Ahlberg, Berzeliusskolan
+- Allan Ismail, Katedralskolan i Växjö
 - Elisabet Xie, Kungsholmens gymnasium
-- Elvin Runeson, Katedralskolan
+- Elvin Runeson, Katedralskolan i Uppsala
 - Jacob Strömgård, Norra Reals gymnasium
+- Markus Farnebäck, Berzeliusskolan
+- Moaaz Mohamed, Luleå Gymnasieskola
+- William Eriksson, Vattenfallgymnasiet

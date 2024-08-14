@@ -14,5 +14,5 @@ Följande finalister har kvalificerat sig till IOL 2024:
 - Elvin Runeson, Katedralskolan i Uppsala
 - Jacob Strömgård, Norra Reals gymnasium
 - Markus Farnebäck, Berzeliusskolan
-- Moaaz Mohamed, Luleå Gymnasieskola
+- Moaaz Saad, Luleå Gymnasieskola
 - William Eriksson, Vattenfallgymnasiet

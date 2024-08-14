@@ -3,7 +3,7 @@ layout: post
 title: "Resultat från kvaltävlingen"
 ---
 
-Årets kvaltävling gick av stapeln den 1:a februari, och den är nu rättad. I år slog vi deltagarrekord med 267 deltagare. Kul att så många duktiga deltagare vill vara med i vår tävling! Vi är imponerade av att så många löser så svåra problem. I år krävdes 60 av 100 möjliga poäng för att hamna bland de 16 bästa deltagarna, som går vidare till finaltävlingen. Resultaten presenteras i tabellen nedan, med poäng per uppgift och totalt. De deltagare som valt att vara anonyma presenteras i pseudonym (kursiverat).
+Årets kvaltävling hölls den 1:a februari, och den är nu rättad. I år slog vi deltagarrekord med 267 deltagare. Kul att så många duktiga deltagare vill vara med i vår tävling! Vi är imponerade av att så många löser så svåra problem. I år krävdes 60 av 100 möjliga poäng för att hamna bland de 16 bästa deltagarna, som går vidare till finaltävlingen. Resultaten presenteras i tabellen nedan, med poäng per uppgift och totalt. De deltagare som valt att vara anonyma presenteras i pseudonym (kursiverat).
 
 <div class="hscroll">
 
@@ -63,7 +63,7 @@ title: "Resultat från kvaltävlingen"
 <tr> <td>52</td> <td>Ellen Pelander</td> <td>Celsiusskolan</td> <td>9</td> <td>11</td> <td>0</td> <td>13</td> <td>16</td> <td>49</td> </tr>
 <tr> <td>53</td> <td>Otto Birkoff</td> <td>Södra Latin</td> <td>9</td> <td>11,5</td> <td>1</td> <td>19,5</td> <td>8</td> <td>49</td> </tr>
 <tr> <td>54</td> <td><i>Siromos</i></td> <td></td> <td>10</td> <td>1,5</td> <td>16</td> <td>19</td> <td>2</td> <td>48,5</td> </tr>
-<tr> <td>55</td> <td>Moaaz Mohamed</td> <td>Luleå Gymasieskola</td> <td>9,5</td> <td>11,5</td> <td>20</td> <td>7</td> <td>0</td> <td>48</td> </tr>
+<tr> <td>55</td> <td>Moaaz Saad</td> <td>Luleå Gymasieskola</td> <td>9,5</td> <td>11,5</td> <td>20</td> <td>7</td> <td>0</td> <td>48</td> </tr>
 <tr> <td>56</td> <td>Linnea Hedberg</td> <td>Franska skolans gymnasium</td> <td>7</td> <td>5</td> <td>17</td> <td>19</td> <td>0</td> <td>48</td> </tr>
 <tr> <td>57</td> <td><i>Throrw</i></td> <td></td> <td>7,5</td> <td>10,5</td> <td>18</td> <td>4,5</td> <td>7,5</td> <td>48</td> </tr>
 <tr> <td>58</td> <td>Eskil Sandblom</td> <td>Danderyds gymnasium</td> <td>10</td> <td>0</td> <td>20</td> <td>18</td> <td>0</td> <td>48</td> </tr>

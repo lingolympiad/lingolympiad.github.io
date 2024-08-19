@@ -12,17 +12,28 @@ body {
   font-size: 100%;
 }
 
+p, table, ul {
+  margin-bottom: 10px;
+}
+
 h1 {
   font-size: 2em;
   margin-bottom: 10px;
 }
 
 h2 {
-  font-size: 1em;
+  font-size: 1.5em;
+  margin-bottom: 10px;
 }
 
-h1, h2 {
+h3, .posttitle {
+  font-size: 1em;
+  margin-bottom: 0px;
+}
+
+h1, h2, h3, .posttitle {
   font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
 }
 
 .divider {
@@ -30,7 +41,7 @@ h1, h2 {
   margin: 20px 0px 15px 0px;
 }
 
-h2 a:not(:hover) {
+.posttitle a:not(:hover) {
   text-decoration: none;
 }
 
@@ -51,15 +62,11 @@ th, td {
   padding: 5px 15px;
 }
 
-p, table, ul {
-  margin-bottom: 10px;
-}
-
 .left-justify tr th {
   text-align: left;
 }
 
-p, h1, h2, li {
+p, h1, h2, h3, li {
   color: #222;
 }
 

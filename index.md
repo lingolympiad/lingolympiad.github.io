@@ -24,7 +24,7 @@ Anmälan har öppnat till kvaltävlingen för Lingolympiaden 2025! Datumet är d
     <th> </th>
     <th>Kvaltävling</th>
     <th>Finaltävling</th>
-    <th>IOL 2024</th>
+    <th>IOL 2025</th>
   </tr>
   <tr>
     <th>Vem</th>

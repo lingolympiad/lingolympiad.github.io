@@ -48,14 +48,18 @@ Anmälan har öppnat till kvaltävlingen för Lingolympiaden 2025! Datumet är d
 
 </div>
 
-Lingolympiaden arrangeras av [Föreningen Lingolympiaden](https://ebas.ungvetenskapssport.se/forening/lingolympiaden), som är medlemsförening i [förbundet Ung Vetenskapssport](https://ungvetenskapssport.se/). Tävlingen arrangeras i samarbete med [Institutionen för lingvistik](https://www.su.se/institutionen-for-lingvistik/) på Stockholms universitet och med stöd av Skolverket.
-
 Följ oss på [Facebook](https://www.facebook.com/lingolympiaden/) och [Instagram](https://www.instagram.com/lingolympiaden/) för regelbundna uppdateringar om Lingolympiaden.
 
 Gå med i vår [Discord-server](https://discord.gg/2j4kKSXkU7) för att diskutera Lingolympiaden med arrangörerna och andra deltagare.
 
 <div class="divider"></div>
 
-*Senaste nyheter:*
+## Senaste nyheter
 
-{% include posts.html limit=2 %}
+{% include posts.html limit=3 %}
+
+<div class="divider"></div>
+
+Lingolympiaden arrangeras av [Föreningen Lingolympiaden](https://ebas.ungvetenskapssport.se/forening/lingolympiaden), som är medlemsförening i [förbundet Ung Vetenskapssport](https://ungvetenskapssport.se/). Tävlingen arrangeras i samarbete med [Institutionen för lingvistik](https://www.su.se/institutionen-for-lingvistik/) på Stockholms universitet och med stöd av [Skolverket](https://www.skolverket.se/).
+
+Lingolympiaden är även tacksam för finansiellt stöd från [Folke Bernadottes Minnesfond](https://www.folkebernadottesminnesfond.se/), [Prins Gustaf Adolfs och Prinsessan Sibyllas Minnesfond](https://gafonden.com/), och Tage Swahns Stiftelse för Undervisning och Forskning.

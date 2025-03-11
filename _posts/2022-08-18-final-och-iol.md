@@ -3,7 +3,9 @@ layout: post
 title: "Finalresultat och IOL"
 ---
 
-Lingolympiadens finaltävling hölls den 1 maj. Vinnaren i finaltävlingen var **David Norberg**.
+Lingolympiadens finaltävling hölls den 1 maj.
+
+Vinnaren i finaltävlingen var **David Norberg**.
 
 Sverige skickade två lag till IOL:
 * **Sweden Gul** bestod av: Constantin Lidberg Dimos, David Norberg, Elisabet Xie, Otto Birkoff

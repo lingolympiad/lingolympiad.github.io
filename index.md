@@ -3,7 +3,7 @@ layout: default
 title:  Lingolympiaden
 ---
 
-Lingolympiaden är en tävling i lingvistisk problemlösning för gymnasieelever från hela Sverige. Det är gratis att delta och kräver inga särskilda förkunskaper. 
+Lingolympiaden är en tävling i lingvistisk problemlösning för gymnasieelever från hela Sverige. Det är gratis att delta och kräver inga särskilda förkunskaper.
 
 Tävligen består av två omgångar:
 * En öppen kvaltävling, där deltagarna försöker lösa fem kluriga uppgifter på tre timmar. Kolla gärna på våra [tidigare uppgifter](ovning) för exempel!
@@ -15,7 +15,7 @@ Tävligen består av två omgångar:
 
 ## Årets tävling
 
-Kvaltävlingen för Lingolympiadens 2025 har avslutats! Du kan se uppgifterna [**här**](ovning), och resultaten [**här**](2024/12/17/kval-resultat.html).
+Lingolympiadens 2025 har avslutats! Du kan se uppgifterna [**här**](ovning), och resultaten från finalen [**här**](2025/03/10/final-resultat.html).
 
 <div class="hscroll">
 

@@ -10,7 +10,7 @@ Under finalen, som i år var en dag längre än tidigare år, har finalisterna, 
 Den som lyckades allra bäst i finalen och därmed vann Lingolympiaden 2025 är **Elvin Runeson** från Katedralskolan i Uppsala.
 
 Följande finalister har kvalificerat sig till IOL 2025:
-- Casper de Ranter, Lars-Erik Larsson-gymnasiet
+- Casper De Ranter, Lars-Erik Larsson-gymnasiet
 - Elvin Runeson, Katedralskolan Uppsala
 - Max Bylund, Hvitfeldtska gymnasiet
 - William Eriksson, Vattenfallgymnasiet

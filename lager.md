@@ -10,7 +10,7 @@ Under lägret får deltagarna umgås med andra språkintresserade ungdomar, lyss
 
 Vill du veta när anmälan till nästa lingvistikläger öppnar? [Gå med i Föreningen Lingolympiaden](https://ebas.ungvetenskapssport.se/blimedlem/lingolympiaden), så får du ett mejl när det är dags att anmäla sig. Det är helt gratis att gå med, och såväl elever som lärare är välkomna!
 
-# Tidigare läger
+## Tidigare läger
 
 ### Lingvistikläger 2025
 - 7–9 februari 2025

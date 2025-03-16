@@ -1,10 +1,8 @@
 ---
 layout: default
-title: Historik
+title: Lingolympiadens historia
 permalink: /tidigare/
 ---
-
-# Lingolympiadens historia
 
 Den första Lingolympiaden ägde rum 2006, på initiativ av Stockholms universitet och UFS, Unga Forskare Stockholm. Sedan dess har tävlingen hållits varje år. Tävlingen har sett lite olika ut från år till år, men fokus har alltid legat på lingvistisk problemlösning.
 
@@ -16,11 +14,11 @@ Sedan UFS upphörde 2023 har Lingolympiaden anordnats av en ideell förening, [*
 
 Föreningen är sedan 2023 också del av förbundet [Ung Vetenskapssport](https://ungvetenskapssport.se/), tillsammans med många andra föreningar som anordnar tävlingar, läger och aktiviteter för unga med vetenskapsintresse. Sedan 2019 har Lingolympiaden och Ung Vetenskapssport tillsammans hållit ett årligt lingvistikläger, där lingvistikintresserade gymnasieelever får träffas, umgås och slipa på sina problemlösningsfärdigheter. 
 
-# Problemen i Lingolympiaden
+## Problemen i Lingolympiaden
 
 Vad vore väl en vetenskapstävling utan sina problem? I Lingolympiadens problem är de gemensamma nämnarna alltid språk, språkvetenskap och logik, men uppgifternas skepnad har varierat lite under åren.
 
-De flesta Lingo-uppgifter tar avstamp i ett av de över 7000 språk som talas runtom i världen. Sedan 2018 har X naturliga språk från Y olika språkfamiljer varit med i tävlingen. 
+De flesta Lingo-uppgifter tar avstamp i ett av de över 7000 språk som talas runtom i världen. Sedan 2018 har 67 naturliga språk från 34 olika språkfamiljer varit med i tävlingen. 
 Det händer också att uppgifter handlar om fiktiva eller konstgjorda språk, t ex konstspråket postpostiska (från tävlingen 2008) eller Game of Thrones-språket dothrakiska (från kvalet 2021) – eller språken hos andra djur än människan, som karolinatitans musikaliska läten (från kvalet 2022).
 
 I tävlingens begynnelse plockades uppgifterna ofta från andra nationella olympiader med stora problemarkiv. Uppgifterna översattes för hand och anpassades ibland till en lagom svårighetsgrad. Flera uppgifter skapades också speciellt för Lingolympiaden, av tävlingens arrangörer eller av forskare i lingvistik. Dessa uppgifter präglades ofta av olika språkvetenskapliga forskningsområden – deltagarna kunde till exempel få tyda svenska språkljud i *spektrogram* (från tävlingen 2011). 
@@ -28,7 +26,7 @@ Under ett antal år hjälpte också kandidatstudenterna i lingvistik på Stockho
 
 Under Lingolympiadens andra decennium har allt fler tidigare deltagare börjat skapa egna Lingo-uppgifter, och de senaste åren har alla problem i såväl kvalet som finalen varit skapade specifikt för tävlingen. Efter tävlingen 2018 började vi publicera våra uppgifter öppet [på vår webbsida](https://www.lingolympiad.org/ovning/), och sedan dess har problemset och facit från samtliga kval och finaler lagts upp. Alla problem publiceras under öppen licens, och några har översatts för användning i andra länders lingvistikolympiader.
 
-# Internationella lingvistikolympiader
+## Internationella lingvistikolympiader
 
 Lingolympiaden är bara en av många nationella lingvistikolympiader världen över. Den första tävlingen någonsin var i Moskva 1965, och sedan dess har många andra länder följt efter. 2003 startades [den internationella lingvistikolympiaden IOL](https://ioling.org/history/), där de som tagits ut i de nationella olympiaderna samlas, umgås och tävlar i att lösa extremt svåra lingvistikproblem. Det första året deltog 6 länder i IOL; idag rymmer olympiaden över 200 deltagare från nästan 40 olika tävlande länder.
 

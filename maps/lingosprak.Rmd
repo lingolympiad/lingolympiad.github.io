@@ -22,7 +22,8 @@ df$popup <- paste0(df$Tävling, " ", df$År)
 df <- df %>% 
   filter(!is.na(lang)) %>% 
   group_by(lang) %>%
-  summarise(popup = paste(unique(popup), collapse = ", "), .groups = "drop")
+  reframe(popup = paste0("(", Språk, ") <br> ", paste(unique(popup), collapse = ", "))) %>%
+  unique()
 ```
 
 Skapa karta

@@ -21,6 +21,8 @@ Vad vore väl en vetenskapstävling utan sina problem? I Lingolympiadens problem
 De flesta Lingo-uppgifter tar avstamp i ett av de över 7000 språk som talas runtom i världen. Sedan 2018 har 67 naturliga språk från 34 olika språkfamiljer varit med i tävlingen. 
 Det händer också att uppgifter handlar om fiktiva eller konstgjorda språk, t ex konstspråket postpostiska (från tävlingen 2008) eller Game of Thrones-språket dothrakiska (från kvalet 2021) – eller språken hos andra djur än människan, som karolinatitans musikaliska läten (från kvalet 2022).
 
+<iframe src="/maps/lingosprak.html" height="300px" width="100%"></iframe>
+
 I tävlingens begynnelse plockades uppgifterna ofta från andra nationella olympiader med stora problemarkiv. Uppgifterna översattes för hand och anpassades ibland till en lagom svårighetsgrad. Flera uppgifter skapades också speciellt för Lingolympiaden, av tävlingens arrangörer eller av forskare i lingvistik. Dessa uppgifter präglades ofta av olika språkvetenskapliga forskningsområden – deltagarna kunde till exempel få tyda svenska språkljud i *spektrogram* (från tävlingen 2011). 
 Under ett antal år hjälpte också kandidatstudenterna i lingvistik på Stockholms universitet till med uppgiftskonstruktion. I kursen *Morfologiska och syntaktiska strukturer* ingick det i examinationen att skapa ett enkelt lingvistikproblem på ett valfritt språk; de studenter som blev särskilt nöjda med sina problem kunde skicka vidare dem till Lingolympiadens arrangörsgrupp, som valde ut några att använda i tävlingen!
 

@@ -1,0 +1,32 @@
+---
+title: "Lingokartor"
+output: html_document
+date: "2025-03-16"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(lingtypology)
+library(dplyr)
+library(htmlwidgets)
+```
+
+## Lingokartor
+
+Ladda data
+```{r}
+df <- read.csv("./lingosprak.csv") %>%
+  filter(ISO.kod != "-")
+df$lang <- lang.iso(df$ISO.kod)
+df$popup <- paste0(df$Tävling, " ", df$År)
+df <- df %>% 
+  filter(!is.na(lang)) %>% 
+  group_by(lang) %>%
+  summarise(popup = paste(unique(popup), collapse = ", "), .groups = "drop")
+```
+
+Skapa karta
+```{r}
+m <- map.feature(languages = df$lang, popup = df$popup)
+saveWidget(m, "lingosprak.html")
+```

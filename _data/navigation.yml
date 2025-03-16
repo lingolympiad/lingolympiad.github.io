@@ -4,7 +4,11 @@
   link: /nyheter/
 - name: "Vanliga frågor"
   link: /faq/
+- name: "Lingoläger"
+  link: /lager/
 - name: "Övningsuppgifter"
   link: /ovning/
+- name: "Historik"
+  link: /tidigare
 - name: "Kontakt"
   link: /kontakt/

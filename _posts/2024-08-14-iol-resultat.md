@@ -7,6 +7,6 @@ title: "Resultat från IOL 2024"
 
 Sverige skickade två lag till IOL:
 * **Sweden Mård** bestod av: William Eriksson, Markus Farnebäck, Allan Ismail, Moaaz Saad
-* **Sweden Älg** bestod av: Adam Ahlberg, Elvin Runeson, Elisabet Xie, Jacob Strömgård
+* **Sweden Älg** bestod av: Elvin Runeson, Elisabet Xie, Jacob Strömgård, Linnea Ahlberg
 
-I den individuella tävlingen på IOL fick **Adam Ahlberg** en bronsmedalj och **Elvin Runeson** ett hedersomnämnande, och i lagtävlingen fick **Sweden Mård** ett hedersomnämnande. Grattis!
+I den individuella tävlingen på IOL fick **Linnea Ahlberg** en bronsmedalj och **Elvin Runeson** ett hedersomnämnande, och i lagtävlingen fick **Sweden Mård** ett hedersomnämnande. Grattis!

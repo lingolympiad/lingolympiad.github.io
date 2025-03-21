@@ -9,7 +9,7 @@ Kvaltävlingen för Lingolympiaden 2024 hölls den 8:e november, och den är nu 
 
 <table class="left-justify">
 <tr style="border-bottom: 3px solid #bbb;"> <th></th> <th>Namn</th> <th>Skola</th> <th>U1</th> <th>U2</th> <th>U3</th> <th>U4</th> <th>U5</th> <th>Totalt</th> </tr>
-<tr> <td>1</td>	<td>Adam Ahlberg</td>	<td>Berzeliusskolan</td> <td>9</td>	<td>15</td>	<td>19</td>	<td>24</td>	<td>21</td>	<td>88</td> </tr>
+<tr> <td>1</td>	<td>Linnea Ahlberg</td>	<td>Berzeliusskolan</td> <td>9</td>	<td>15</td>	<td>19</td>	<td>24</td>	<td>21</td>	<td>88</td> </tr>
 <tr> <td>2</td>	<td>Annie Karheiding</td>	<td>Hvitfeldtska gymnasiet</td> <td>10</td>	<td>12</td>	<td>20</td>	<td>25</td>	<td>18,5</td>	<td>85,5</td> </tr>
 <tr> <td>3</td>	<td>Casper De Ranter</td>	<td>Lars-Erik Larssongymnasiet</td> <td>10</td>	<td>15</td>	<td>17</td>	<td>19</td>	<td>22</td>	<td>83</td> </tr>
 <tr> <td>4</td>	<td>William Eriksson</td>	<td>Vattenfallgymnasiet</td> <td>10</td>	<td>15</td>	<td>16</td>	<td>25</td>	<td>16</td>	<td>82</td> </tr>

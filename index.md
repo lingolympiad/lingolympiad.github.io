@@ -26,7 +26,7 @@ Anmälan till Lingolympiaden 2026 har öppnat! Anmälan finns [**här**](2025/08
     <th> </th>
     <th>Kvaltävling</th>
     <th>Finaltävling</th>
-    <th>IOL 2025</th>
+    <th>IOL 2026</th>
   </tr>
   <tr>
     <th>Vem</th>
@@ -38,7 +38,7 @@ Anmälan till Lingolympiaden 2026 har öppnat! Anmälan finns [**här**](2025/08
     <th>Var</th>
     <td>På elevens egen skola</td>
     <td>Stockholm</td>
-    <td>Taipei, Taiwan</td>
+    <td>Bukarest, Rumänien</td>
   </tr>
   <tr>
     <th>När</th>

@@ -17,7 +17,7 @@ Varje vår anordnar vi också ett lingvistikläger tillsammans med Ung Vetenskap
 
 ## Årets tävling
 
-Lingolympiaden 2025 har avslutats! Du kan se uppgifterna [**här**](ovning), och resultaten från finalen [**här**](2025/03/10/final-resultat.html).
+Anmälan till Lingolympiaden 2026 har öppnat! Anmälan finns [**här**](2025/08/12/kval-anmalan.html).
 
 <div class="hscroll">
 
@@ -42,9 +42,9 @@ Lingolympiaden 2025 har avslutats! Du kan se uppgifterna [**här**](ovning), och
   </tr>
   <tr>
     <th>När</th>
-    <td>13 november 2024</td>
-    <td>7–9 mars 2025</td>
-    <td>20–27 juli 2025</td>
+    <td>5 november 2025</td>
+    <td>mars 2026</td>
+    <td>juli 2026</td>
   </tr>
 </table>
 

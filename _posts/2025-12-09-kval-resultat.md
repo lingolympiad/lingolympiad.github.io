@@ -25,7 +25,7 @@ Resultaten presenteras i tabellen nedan, med poäng per uppgift och totalt. De d
 <tr> <td>12</td> <td>Alba Bårström</td> <td>Tumba gymnasium</td> <td>9,5</td> <td>15,0</td> <td>20,0</td> <td>22,0</td> <td>0,0</td> <td>66,5</td> </tr>
 <tr> <td>13</td> <td>Anders Dafoe</td> <td>Katedralskolan Uppsala</td> <td>7,5</td> <td>14,5</td> <td>19,5</td> <td>22,0</td> <td>3,0</td> <td>66,5</td> </tr>
 <tr> <td>14</td> <td>Leo Strömander</td> <td>Täby Enskilda gymnasium</td> <td>8,0</td> <td>11,0</td> <td>20,0</td> <td>20,5</td> <td>7,0</td> <td>66,5</td> </tr>
-<tr> <td>15</td> <td>Aron Helzel Golan</td> <td>Franklins gymnasium</td> <td>6,5</td> <td>12,0</td> <td>20,0</td> <td>19,0</td> <td>9,0</td> <td>66,5</td> </tr>
+<tr> <td>15</td> <td>Aron Helzel Golan</td> <td>Danderyds gymnasium</td> <td>6,5</td> <td>12,0</td> <td>20,0</td> <td>19,0</td> <td>9,0</td> <td>66,5</td> </tr>
 <tr> <td>16</td> <td>Martin Zhang</td> <td>Hvitfeldtska gymnasiet</td> <td>9,0</td> <td>11,5</td> <td>20,0</td> <td>22,0</td> <td>4,0</td> <td>66,5</td> </tr>
 <tr> <td>17</td> <td>Oliver Wallin</td> <td>Malmö Borgarskola</td> <td>10,0</td> <td>15,0</td> <td>20,0</td> <td>21,0</td> <td>0,0</td> <td>66,0</td> </tr>
 <tr> <td>18</td> <td>Malin Axell</td> <td>Hvitfeldtska gymnasiet</td> <td>10,0</td> <td>13,0</td> <td>20,0</td> <td>20,0</td> <td>2,0</td> <td>65,0</td> </tr>

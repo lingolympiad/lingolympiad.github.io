@@ -11,13 +11,11 @@ Tävlingen består av två omgångar:
 
 Varje vår anordnar vi också ett lingvistikläger tillsammans med Ung Vetenskapssport. Lägret är öppet för alla gymnasieelever – läs mer [här](lager)!
 
-<!-- Lingolympiaden 2024 har avslutats! Du kan se resultaten från finalen [här](2024/03/24/final-resultat.html), och resultaten från IOL [här](2024/08/14/iol-resultat.html). -->
-
 <div class="divider"></div>
 
 ## Årets tävling
 
-Anmälan till Lingolympiaden 2026 har öppnat! Anmälan finns [**här**](2025/08/12/kval-anmalan.html).
+Kvaltävlingen för Lingolympiaden 2026 har avslutats! Resultaten finns [**här**](2025/12/09/kval-resultat.html). Datumet för finaltävlingen är 20–22 mars.
 
 <div class="hscroll">
 
@@ -43,7 +41,7 @@ Anmälan till Lingolympiaden 2026 har öppnat! Anmälan finns [**här**](2025/08
   <tr>
     <th>När</th>
     <td>5 november 2025</td>
-    <td>mars 2026</td>
+    <td>20–22 mars 2026</td>
     <td>juli 2026</td>
   </tr>
 </table>

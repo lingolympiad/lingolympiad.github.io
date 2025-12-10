@@ -11,6 +11,9 @@
       {% if item.final-uppg %}
         <td><a href="{{ item.final-uppg }}">Uppgifter</a>{% if item.final-facit %} & <a href="{{ item.final-facit }}">Facit</a>{% endif %}</td>
       {% endif %}
+      {% if item.year == 2020 %}
+        <td>(ingen final hölls)</td>
+      {% endif %}
     </tr>
   {% endfor %}
 </table>

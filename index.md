@@ -13,9 +13,15 @@ Varje vår anordnar vi också ett lingvistikläger tillsammans med Ung Vetenskap
 
 <div class="divider"></div>
 
-## Årets tävling
+## Lingolympiadens lagtävling
 
-Kvaltävlingen för Lingolympiaden 2026 har avslutats! Resultaten finns [**här**](2025/12/09/kval-resultat.html). Datumet för finaltävlingen är 20–22 mars.
+I år håller Lingolympiaden en lagtävling, öppen för alla som vill delta. Lagtävlingen Punkten sker den 8–9 maj i lag om upp till fyra personer. Varmt välkomna! Anmälan finns [**här**](https://forms.gle/FNMcX5WTA1tHQStg7).
+
+<div class="divider"></div>
+
+## Individuella tävlingar
+
+Lingolympiaden 2026 har avslutats! Resultaten finns [**här**](2026/03/26/final-resultat.html).
 
 <div class="hscroll">
 

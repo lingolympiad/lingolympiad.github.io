@@ -8,6 +8,10 @@ Uppgifterna från Lingolympiadens kval- och finaltävlingar sedan 2018 finns i t
 
 {% include uppg-tabell.html %}
 
+Lingolympiaden har också anordnat en öppen lagtävling 2026. Uppgifter och facit från lagtävlingen finns nedan.
+
+{% include lag-uppg-tabell.html %}
+
 Svårare uppgifter går att hitta på [ioling.org](http://ioling.org), webbsidan för IOL.
 
 Lingolympiadens uppgifter distribueras under licensen [CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/).

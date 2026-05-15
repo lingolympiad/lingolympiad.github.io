@@ -15,7 +15,7 @@ Varje vår anordnar vi också ett lingvistikläger tillsammans med Ung Vetenskap
 
 ## Lingolympiadens lagtävling
 
-I år håller Lingolympiaden en lagtävling, öppen för alla som vill delta. [Lagtävlingen Punkten](pdf/punkten-2026.pdf) sker den 8–9 maj i lag om upp till fyra personer. Varmt välkomna! Anmälan finns [här](https://forms.gle/FNMcX5WTA1tHQStg7).
+I år höll Lingolympiaden en lagtävling den 8–9 maj. Uppgifterna och facit finns nu tillgängliga [här](ovning). Resultat kommer snart!
 
 <div class="divider"></div>
 

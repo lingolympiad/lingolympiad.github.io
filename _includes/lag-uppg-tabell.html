@@ -1,0 +1,13 @@
+<table style="margin-bottom: 18px;">
+  <tr>
+    <th>År</th><th>Lagtävling</th>
+  </tr>
+  {% for item in site.data.uppgifter %}
+    {% if item.lag-uppg %}
+    <tr>
+      <td>{{ item.year }}</td>
+      <td><a href="{{ item.lag-uppg }}">Uppgifter</a>{% if item.lag-facit %} & <a href="{{ item.lag-facit }}">Facit</a>{% endif %}</td>
+    </tr>
+    {% endif %}
+  {% endfor %}
+</table>

@@ -8,7 +8,7 @@ Uppgifterna från Lingolympiadens kval- och finaltävlingar sedan 2018 finns i t
 
 {% include uppg-tabell.html %}
 
-Lingolympiaden har också anordnat en öppen lagtävling 2026. Uppgifter och facit från lagtävlingen finns nedan.
+Lingolympiaden har också anordnat en öppen lagtävling 2026. Uppgifter från lagtävlingen finns nedan. Facit kommer snart!
 
 {% include lag-uppg-tabell.html %}
 

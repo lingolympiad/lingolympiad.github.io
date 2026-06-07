@@ -16,8 +16,8 @@ library(htmlwidgets)
 Ladda data
 ```{r}
 df <- read.csv("./lingosprak.csv") %>%
-  filter(ISO.kod != "-")
-df$lang <- lang.iso(df$ISO.kod)
+  filter(Glottokod != "-")
+df$lang <- lang.gltc(df$Glottokod)
 df$popup <- paste0(df$Tävling, " ", df$År)
 df <- df %>% 
   filter(!is.na(lang)) %>% 

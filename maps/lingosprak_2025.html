@@ -3547,7 +3547,7 @@ methods.setGroupOptions = function (group, options) {
   this.showHideGroupsOnZoom();
 };
 
-methods.addRasterImage = function (uri, bounds, layerId, group, options) {
+methods.addRasterImage = function (uri, bounds, opacity, attribution, layerId, group) {
   // uri is a data URI containing an image. We want to paint this image as a
   // layer at (top-left) bounds[0] to (bottom-right) bounds[1].
   // We can't simply use ImageOverlay, as it uses bilinear scaling which looks
@@ -3667,10 +3667,12 @@ methods.addRasterImage = function (uri, bounds, layerId, group, options) {
 
   img.src = uri;
 
-  var canvasTiles = _leaflet2["default"].gridLayer(Object.assign({}, options, {
+  var canvasTiles = _leaflet2["default"].gridLayer({
+    opacity: opacity,
+    attribution: attribution,
     detectRetina: true,
     async: true
-  })); // NOTE: The done() function MUST NOT be invoked until after the current
+  }); // NOTE: The done() function MUST NOT be invoked until after the current
   // tick; done() looks in Leaflet's tile cache for the current tile, and
   // since it's still being constructed, it won't be found.
 
@@ -4067,7 +4069,7 @@ function asArray(value) {
 
 },{}]},{},[13]);
 </script>
-<script>(function(root, factory) {
+<script>(function (root, factory) {
 	if (typeof define === 'function' && define.amd) {
 		// AMD. Register as an anonymous module.
 		define(['leaflet'], factory);
@@ -4078,11 +4080,11 @@ function asArray(value) {
 		// Assume Leaflet is loaded into global object L already
 		factory(L);
 	}
-}(this, function(L) {
+}(this, function (L) {
 	'use strict';
 
 	L.TileLayer.Provider = L.TileLayer.extend({
-		initialize: function(arg, options) {
+		initialize: function (arg, options) {
 			var providers = L.TileLayer.Provider.providers;
 
 			var parts = arg.split('.');
@@ -4121,13 +4123,12 @@ function asArray(value) {
 
 			// replace attribution placeholders with their values from toplevel provider attribution,
 			// recursively
-			var attributionReplacer = function(attr) {
+			var attributionReplacer = function (attr) {
 				if (attr.indexOf('{attribution.') === -1) {
 					return attr;
 				}
-				return attr.replace(
-					/\{attribution.(\w*)\}/g,
-					function(match, attributionName) {
+				return attr.replace(/\{attribution.(\w*)\}/g,
+					function (match, attributionName) {
 						return attributionReplacer(providers[attributionName].options.attribution);
 					}
 				);
@@ -4147,7 +4148,7 @@ function asArray(value) {
 
 	L.TileLayer.Provider.providers = {
 		OpenStreetMap: {
-			url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+			url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 			options: {
 				maxZoom: 19,
 				attribution:
@@ -4156,7 +4157,7 @@ function asArray(value) {
 			variants: {
 				Mapnik: {},
 				DE: {
-					url: 'https://tile.openstreetmap.de/{z}/{x}/{y}.png',
+					url: 'https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png',
 					options: {
 						maxZoom: 18
 					}
@@ -4189,41 +4190,6 @@ function asArray(value) {
 					options: {
 						attribution: '{attribution.OpenStreetMap}, Tiles courtesy of <a href="http://www.openstreetmap.bzh/" target="_blank">Breton OpenStreetMap Team</a>',
 						bounds: [[46.2, -5.5], [50, 0.7]]
-					}
-				},
-				CAT: {
-					url: 'https://tile.openstreetmap.bzh/ca/{z}/{x}/{y}.png',
-					options: {
-						attribution: '{attribution.OpenStreetMap}, Tiles courtesy of <a href="https://www.openstreetmap.cat" target="_blank">Breton OpenStreetMap Team</a>',
-					}
-				}
-			}
-		},
-		MapTilesAPI: {
-			url: 'https://maptiles.p.rapidapi.com/{variant}/{z}/{x}/{y}.png?rapidapi-key={apikey}',
-			options: {
-				attribution:
-					'&copy; <a href="http://www.maptilesapi.com/">MapTiles API</a>, {attribution.OpenStreetMap}',
-				variant: 'en/map/v1',
-				// Get your own MapTiles API access token here : https://www.maptilesapi.com/
-				// NB : this is a demonstration key that comes with no guarantee and not to be used in production
-				apikey: '<insert your api key here>',
-				maxZoom: 19
-			},
-			variants: {
-				OSMEnglish: {
-					options: {
-						variant: 'en/map/v1'
-					}
-				},
-				OSMFrancais: {
-					options: {
-						variant: 'fr/map/v1'
-					}
-				},
-				OSMEspagnol: {
-					options: {
-						variant: 'es/map/v1'
 					}
 				}
 			}
@@ -4270,149 +4236,28 @@ function asArray(value) {
 			}
 		},
 		Stadia: {
-			url: 'https://tiles.stadiamaps.com/tiles/{variant}/{z}/{x}/{y}{r}.{ext}',
+			url: 'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png',
 			options: {
-				minZoom: 0,
 				maxZoom: 20,
-				attribution:
-					'&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> ' +
-					'&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
-					'{attribution.OpenStreetMap}',
-				variant: 'alidade_smooth',
-				ext: 'png'
+				attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
 			},
 			variants: {
-				AlidadeSmooth: 'alidade_smooth',
-				AlidadeSmoothDark: 'alidade_smooth_dark',
-				AlidadeSatellite: {
-					options: {
-						attribution:
-						  '&copy; CNES, Distribution Airbus DS, © Airbus DS, © PlanetObserver (Contains Copernicus Data) | ' +
-							'&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> ' +
-							'&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
-							'{attribution.OpenStreetMap}',
-						variant: 'alidade_satellite',
-						ext: 'jpg',
-					}
+				AlidadeSmooth: {
+					url: 'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png'
 				},
-				OSMBright: 'osm_bright',
-				Outdoors: 'outdoors',
-				StamenToner: {
-					options: {
-						attribution:
-							'&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> ' +
-							'&copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> ' +
-							'&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
-							'{attribution.OpenStreetMap}',
-						variant: 'stamen_toner'
-					}
+				AlidadeSmoothDark: {
+					url: 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png'
 				},
-				StamenTonerBackground: {
-					options: {
-						attribution:
-							'&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> ' +
-							'&copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> ' +
-							'&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
-							'{attribution.OpenStreetMap}',
-						variant: 'stamen_toner_background'
-					}
+				OSMBright: {
+					url: 'https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png'
 				},
-				StamenTonerLines: {
-					options: {
-						attribution:
-							'&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> ' +
-							'&copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> ' +
-							'&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
-							'{attribution.OpenStreetMap}',
-						variant: 'stamen_toner_lines'
-					}
-				},
-				StamenTonerLabels: {
-					options: {
-						attribution:
-							'&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> ' +
-							'&copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> ' +
-							'&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
-							'{attribution.OpenStreetMap}',
-						variant: 'stamen_toner_labels'
-					}
-				},
-				StamenTonerLite: {
-					options: {
-						attribution:
-							'&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> ' +
-							'&copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> ' +
-							'&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
-							'{attribution.OpenStreetMap}',
-						variant: 'stamen_toner_lite'
-					}
-				},
-				StamenWatercolor: {
-					url: 'https://tiles.stadiamaps.com/tiles/{variant}/{z}/{x}/{y}.{ext}',
-					options: {
-						attribution:
-							'&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> ' +
-							'&copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> ' +
-							'&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
-							'{attribution.OpenStreetMap}',
-						variant: 'stamen_watercolor',
-						ext: 'jpg',
-						minZoom: 1,
-						maxZoom: 16
-					}
-				},
-				StamenTerrain: {
-					options: {
-						attribution:
-							'&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> ' +
-							'&copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> ' +
-							'&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
-							'{attribution.OpenStreetMap}',
-						variant: 'stamen_terrain',
-						minZoom: 0,
-						maxZoom: 18
-					}
-				},
-				StamenTerrainBackground: {
-					options: {
-						attribution:
-							'&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> ' +
-							'&copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> ' +
-							'&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
-							'{attribution.OpenStreetMap}',
-						variant: 'stamen_terrain_background',
-						minZoom: 0,
-						maxZoom: 18
-					}
-				},
-				StamenTerrainLabels: {
-					options: {
-						attribution:
-							'&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> ' +
-							'&copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> ' +
-							'&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
-							'{attribution.OpenStreetMap}',
-						variant: 'stamen_terrain_labels',
-						minZoom: 0,
-						maxZoom: 18
-					}
-				},
-				StamenTerrainLines: {
-					options: {
-						attribution:
-							'&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> ' +
-							'&copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> ' +
-							'&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
-							'{attribution.OpenStreetMap}',
-						variant: 'stamen_terrain_lines',
-						minZoom: 0,
-						maxZoom: 18
-					}
+				Outdoors: {
+					url: 'https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png'
 				}
 			}
 		},
 		Thunderforest: {
-			url: 'https://{s}.tile.thunderforest.com/{variant}/{z}/{x}/{y}{r}.png?apikey={apikey}',
+			url: 'https://{s}.tile.thunderforest.com/{variant}/{z}/{x}/{y}.png?apikey={apikey}',
 			options: {
 				attribution:
 					'&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, {attribution.OpenStreetMap}',
@@ -4444,17 +4289,6 @@ function asArray(value) {
 				Neighbourhood: 'neighbourhood'
 			}
 		},
-		BaseMapDE: {
-			url: 'https://sgx.geodatenzentrum.de/wmts_basemapde/tile/1.0.0/{variant}/default/GLOBAL_WEBMERCATOR/{z}/{y}/{x}.png',
-			options: {
-				attribution: 'Map data: &copy; <a href="http://www.govdata.de/dl-de/by-2-0">dl-de/by-2-0</a>',
-				variant: 'de_basemapde_web_raster_farbe',
-			},
-			variants: {
-				Color: 'de_basemapde_web_raster_farbe',
-				Grey: 'de_basemapde_web_raster_grau'
-			}
-		},
 		CyclOSM: {
 			url: 'https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png',
 			options: {
@@ -4462,15 +4296,29 @@ function asArray(value) {
 				attribution: '<a href="https://github.com/cyclosm/cyclosm-cartocss-style/releases" title="CyclOSM - Open Bicycle render">CyclOSM</a> | Map data: {attribution.OpenStreetMap}'
 			}
 		},
+		Hydda: {
+			url: 'https://{s}.tile.openstreetmap.se/hydda/{variant}/{z}/{x}/{y}.png',
+			options: {
+				maxZoom: 20,
+				variant: 'full',
+				attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data {attribution.OpenStreetMap}'
+			},
+			variants: {
+				Full: 'full',
+				Base: 'base',
+				RoadsAndLabels: 'roads_and_labels'
+			}
+		},
 		Jawg: {
-			url: 'https://tile.jawg.io/{variant}/{z}/{x}/{y}{r}.png?access-token={accessToken}',
+			url: 'https://{s}.tile.jawg.io/{variant}/{z}/{x}/{y}{r}.png?access-token={accessToken}',
 			options: {
 				attribution:
-					'<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> ' +
+					'<a href="http://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> ' +
 					'{attribution.OpenStreetMap}',
 				minZoom: 0,
 				maxZoom: 22,
-				variant: 'jawg-streets',
+				subdomains: 'abcd',
+				variant: 'jawg-terrain',
 				// Get your own Jawg access token here : https://www.jawg.io/lab/
 				// NB : this is a demonstration key that comes with no guarantee
 				accessToken: '<insert your access token here>',
@@ -4478,7 +4326,6 @@ function asArray(value) {
 			variants: {
 				Streets: 'jawg-streets',
 				Terrain: 'jawg-terrain',
-				Lagoon: 'jawg-lagoon',
 				Sunny: 'jawg-sunny',
 				Dark: 'jawg-dark',
 				Light: 'jawg-light',
@@ -4513,9 +4360,9 @@ function asArray(value) {
 				maxZoom: 21
 			},
 			variants: {
-				Streets: 'streets-v2',
-				Basic: 'basic-v2',
-				Bright: 'bright-v2',
+				Streets: 'streets',
+				Basic: 'basic',
+				Bright: 'bright',
 				Pastel: 'pastel',
 				Positron: 'positron',
 				Hybrid: {
@@ -4524,35 +4371,76 @@ function asArray(value) {
 						ext: 'jpg'
 					}
 				},
-				Toner: 'toner-v2',
-				Topo: 'topo-v2',
-				Voyager: 'voyager-v2',
-				Ocean: 'ocean',
-				Backdrop: 'backdrop',
-				Dataviz: 'dataviz',
-				DatavizLight: 'dataviz-light',
-				DatavizDark: 'dataviz-dark',
-				Aquarelle: {
+				Toner: 'toner',
+				Topo: 'topo',
+				Voyager: 'voyager'
+			}
+		},
+		Stamen: {
+			url: 'https://stamen-tiles-{s}.a.ssl.fastly.net/{variant}/{z}/{x}/{y}{r}.{ext}',
+			options: {
+				attribution:
+					'Map tiles by <a href="http://stamen.com">Stamen Design</a>, ' +
+					'<a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; ' +
+					'Map data {attribution.OpenStreetMap}',
+				subdomains: 'abcd',
+				minZoom: 0,
+				maxZoom: 20,
+				variant: 'toner',
+				ext: 'png'
+			},
+			variants: {
+				Toner: 'toner',
+				TonerBackground: 'toner-background',
+				TonerHybrid: 'toner-hybrid',
+				TonerLines: 'toner-lines',
+				TonerLabels: 'toner-labels',
+				TonerLite: 'toner-lite',
+				Watercolor: {
+					url: 'https://stamen-tiles-{s}.a.ssl.fastly.net/{variant}/{z}/{x}/{y}.{ext}',
 					options: {
-						variant: 'aquarelle',
-						ext: 'webp'
+						variant: 'watercolor',
+						ext: 'jpg',
+						minZoom: 1,
+						maxZoom: 16
 					}
 				},
-				Landscape: 'landscape',
-				Openstreetmap: {
+				Terrain: {
 					options: {
-						variant: 'openstreetmap',
-						ext: 'jpg'
+						variant: 'terrain',
+						minZoom: 0,
+						maxZoom: 18
 					}
 				},
-				Outdoor: 'outdoor-v2',
-				Satellite: {
+				TerrainBackground: {
 					options: {
-						variant: 'satellite',
-						ext: 'jpg'
+						variant: 'terrain-background',
+						minZoom: 0,
+						maxZoom: 18
 					}
 				},
-				Winter: 'winter-v2',
+				TerrainLabels: {
+					options: {
+						variant: 'terrain-labels',
+						minZoom: 0,
+						maxZoom: 18
+					}
+				},
+				TopOSMRelief: {
+					url: 'https://stamen-tiles-{s}.a.ssl.fastly.net/{variant}/{z}/{x}/{y}.{ext}',
+					options: {
+						variant: 'toposm-color-relief',
+						ext: 'jpg',
+						bounds: [[22, -132], [51, -56]]
+					}
+				},
+				TopOSMFeatures: {
+					options: {
+						variant: 'toposm-features',
+						bounds: [[22, -132], [51, -56]],
+						opacity: 0.9
+					}
+				}
 			}
 		},
 		TomTom: {
@@ -4585,6 +4473,14 @@ function asArray(value) {
 						attribution:
 							'{attribution.Esri} &mdash; ' +
 							'Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
+					}
+				},
+				DeLorme: {
+					options: {
+						variant: 'Specialty/DeLorme_World_Base_Map',
+						minZoom: 1,
+						maxZoom: 11,
+						attribution: '{attribution.Esri} &mdash; Copyright: &copy;2012 DeLorme'
 					}
 				},
 				WorldTopoMap: {
@@ -4628,7 +4524,7 @@ function asArray(value) {
 				},
 				OceanBasemap: {
 					options: {
-						variant: 'Ocean/World_Ocean_Base',
+						variant: 'Ocean_Basemap',
 						maxZoom: 13,
 						attribution: '{attribution.Esri} &mdash; Sources: GEBCO, NOAA, CHS, OSU, UNH, CSUMB, National Geographic, DeLorme, NAVTEQ, and Esri'
 					}
@@ -4671,29 +4567,25 @@ function asArray(value) {
 				Snow: 'snow'
 			}
 		},
-
 		HERE: {
-
 			/*
-			 * HERE maps API Version 3.
-			 * documentation at: https://www.here.com/docs/bundle/raster-tile-api-developer-guide/page/README.html
-			 * These basemaps are free, but you need an API key. Please sign up at
-			 * https://platform.here.com/portal/
-			 * Subscription remains for free, pricing details can be found here: https://www.here.com/get-started/pricing
-			 * Version 3 deprecates the app_id and app_code access in favor of apiKey
+			 * HERE maps, formerly Nokia maps.
+			 * These basemaps are free, but you need an api id and app key. Please sign up at
+			 * https://developer.here.com/plans
 			 */
 			url:
-				'https://maps.hereapi.com/v3/base/mc/' + // new base url for HERE maptile v3 api
-				'{z}/{x}/{y}/{format}?style={variant}&size={size}' + // slightly modified parameters
-				'&apiKey={app_id}&lg={language}', // replacing app-id with apikey
+				'https://{s}.{base}.maps.api.here.com/maptile/2.1/' +
+				'{type}/{mapID}/{variant}/{z}/{x}/{y}/{size}/{format}?' +
+				'app_id={app_id}&app_code={app_code}&lg={language}',
 			options: {
 				attribution:
-					'Map &copy; 1987-' + new Date().getFullYear() + ' <a href="http://platform.here.com">HERE</a>',
+					'Map &copy; 1987-' + new Date().getFullYear() + ' <a href="http://developer.here.com">HERE</a>',
 				subdomains: '1234',
 				mapID: 'newest',
-				apiKey: '<insert your apiKey here>', // switching from appid and appcode to apikey
+				'app_id': '<insert your app_id here>',
+				'app_code': '<insert your app_code here>',
 				base: 'base',
-				variant: 'explore.day',
+				variant: 'normal.day',
 				maxZoom: 20,
 				type: 'maptile',
 				language: 'eng',
@@ -4701,17 +4593,143 @@ function asArray(value) {
 				size: '256'
 			},
 			variants: {
-				exploreDay: 'explore.day',
-				liteDay: 'lite.day',
-				logisticsDay: 'logistics.day',
-				topoDay: 'topo.day',
-				logisticsNight: 'logistics.night',
-				exploreNight: 'explore.night',
-				topoNight: 'topo.night',
-				liteNight: 'lite.night',
-				exploreSatelliteDay: 'explore.satellite.day',
-				liteSatelliteDay: 'lite.satellite.day',
-				logisticsSatelliteDay: 'logistics.satellite.day',
+				normalDay: 'normal.day',
+				normalDayCustom: 'normal.day.custom',
+				normalDayGrey: 'normal.day.grey',
+				normalDayMobile: 'normal.day.mobile',
+				normalDayGreyMobile: 'normal.day.grey.mobile',
+				normalDayTransit: 'normal.day.transit',
+				normalDayTransitMobile: 'normal.day.transit.mobile',
+				normalDayTraffic: {
+					options: {
+						variant: 'normal.traffic.day',
+						base: 'traffic',
+						type: 'traffictile'
+					}
+				},
+				normalNight: 'normal.night',
+				normalNightMobile: 'normal.night.mobile',
+				normalNightGrey: 'normal.night.grey',
+				normalNightGreyMobile: 'normal.night.grey.mobile',
+				normalNightTransit: 'normal.night.transit',
+				normalNightTransitMobile: 'normal.night.transit.mobile',
+				reducedDay: 'reduced.day',
+				reducedNight: 'reduced.night',
+				basicMap: {
+					options: {
+						type: 'basetile'
+					}
+				},
+				mapLabels: {
+					options: {
+						type: 'labeltile',
+						format: 'png'
+					}
+				},
+				trafficFlow: {
+					options: {
+						base: 'traffic',
+						type: 'flowtile'
+					}
+				},
+				carnavDayGrey: 'carnav.day.grey',
+				hybridDay: {
+					options: {
+						base: 'aerial',
+						variant: 'hybrid.day'
+					}
+				},
+				hybridDayMobile: {
+					options: {
+						base: 'aerial',
+						variant: 'hybrid.day.mobile'
+					}
+				},
+				hybridDayTransit: {
+					options: {
+						base: 'aerial',
+						variant: 'hybrid.day.transit'
+					}
+				},
+				hybridDayGrey: {
+					options: {
+						base: 'aerial',
+						variant: 'hybrid.grey.day'
+					}
+				},
+				hybridDayTraffic: {
+					options: {
+						variant: 'hybrid.traffic.day',
+						base: 'traffic',
+						type: 'traffictile'
+					}
+				},
+				pedestrianDay: 'pedestrian.day',
+				pedestrianNight: 'pedestrian.night',
+				satelliteDay: {
+					options: {
+						base: 'aerial',
+						variant: 'satellite.day'
+					}
+				},
+				terrainDay: {
+					options: {
+						base: 'aerial',
+						variant: 'terrain.day'
+					}
+				},
+				terrainDayMobile: {
+					options: {
+						base: 'aerial',
+						variant: 'terrain.day.mobile'
+					}
+				}
+			}
+		},
+		HEREv3: {
+			/*
+			 * HERE maps API Version 3.
+			 * These basemaps are free, but you need an API key. Please sign up at
+			 * https://developer.here.com/plans
+			 * Version 3 deprecates the app_id and app_code access in favor of apiKey
+			 *
+			 * Supported access methods as of 2019/12/21:
+			 * @see https://developer.here.com/faqs#access-control-1--how-do-you-control-access-to-here-location-services
+			 */
+			url:
+				'https://{s}.{base}.maps.ls.hereapi.com/maptile/2.1/' +
+				'{type}/{mapID}/{variant}/{z}/{x}/{y}/{size}/{format}?' +
+				'apiKey={apiKey}&lg={language}',
+			options: {
+				attribution:
+					'Map &copy; 1987-' + new Date().getFullYear() + ' <a href="http://developer.here.com">HERE</a>',
+				subdomains: '1234',
+				mapID: 'newest',
+				apiKey: '<insert your apiKey here>',
+				base: 'base',
+				variant: 'normal.day',
+				maxZoom: 20,
+				type: 'maptile',
+				language: 'eng',
+				format: 'png8',
+				size: '256'
+			},
+			variants: {
+				normalDay: 'normal.day',
+				normalDayCustom: 'normal.day.custom',
+				normalDayGrey: 'normal.day.grey',
+				normalDayMobile: 'normal.day.mobile',
+				normalDayGreyMobile: 'normal.day.grey.mobile',
+				normalDayTransit: 'normal.day.transit',
+				normalDayTransitMobile: 'normal.day.transit.mobile',
+				normalNight: 'normal.night',
+				normalNightMobile: 'normal.night.mobile',
+				normalNightGrey: 'normal.night.grey',
+				normalNightGreyMobile: 'normal.night.grey.mobile',
+				normalNightTransit: 'normal.night.transit',
+				normalNightTransitMobile: 'normal.night.transit.mobile',
+				reducedDay: 'reduced.day',
+				reducedNight: 'reduced.night',
 				basicMap: {
 					options: {
 						type: 'basetile'
@@ -4784,7 +4802,7 @@ function asArray(value) {
 				subdomains: 'abcd',
 				bounds: [[47.204642, 15.996093], [49.830896, 22.576904]],
 				attribution:
-					'{attribution.OpenStreetMap}, visualization CC-By-SA 2.0 <a href="http://freemap.sk">Freemap.sk</a>'
+					'{attribution.OpenStreetMap}, vizualization CC-By-SA 2.0 <a href="http://freemap.sk">Freemap.sk</a>'
 			}
 		},
 		MtbMap: {
@@ -4833,10 +4851,11 @@ function asArray(value) {
 			}
 		},
 		BasemapAT: {
-			url: 'https://mapsneu.wien.gv.at/basemap/{variant}/{type}/google3857/{z}/{y}/{x}.{format}',
+			url: 'https://maps{s}.wien.gv.at/basemap/{variant}/{type}/google3857/{z}/{y}/{x}.{format}',
 			options: {
 				maxZoom: 19,
 				attribution: 'Datenquelle: <a href="https://www.basemap.at">basemap.at</a>',
+				subdomains: ['', '1', '2', '3', '4'],
 				type: 'normal',
 				format: 'png',
 				bounds: [[46.358770, 8.782379], [49.037872, 17.189532]],
@@ -4881,7 +4900,7 @@ function asArray(value) {
 			}
 		},
 		nlmaps: {
-			url: 'https://service.pdok.nl/brt/achtergrondkaart/wmts/v2_0/{variant}/EPSG:3857/{z}/{x}/{y}.png',
+			url: 'https://geodata.nationaalgeoregister.nl/tiles/service/wmts/{variant}/EPSG:3857/{z}/{x}/{y}.png',
 			options: {
 				minZoom: 6,
 				maxZoom: 19,
@@ -4889,12 +4908,11 @@ function asArray(value) {
 				attribution: 'Kaartgegevens &copy; <a href="https://www.kadaster.nl">Kadaster</a>'
 			},
 			variants: {
-				standaard: 'standaard',
-				pastel: 'pastel',
-				grijs: 'grijs',
-				water: 'water',
-				luchtfoto: {
-					url: 'https://service.pdok.nl/hwh/luchtfotorgb/wmts/v1_0/Actueel_ortho25/EPSG:3857/{z}/{x}/{y}.jpeg',
+				'standaard': 'brtachtergrondkaart',
+				'pastel': 'brtachtergrondkaartpastel',
+				'grijs': 'brtachtergrondkaartgrijs',
+				'luchtfoto': {
+					'url': 'https://service.pdok.nl/hwh/luchtfotorgb/wmts/v1_0/Actueel_ortho25/EPSG:3857/{z}/{x}/{y}.jpeg',
 				}
 			}
 		},
@@ -4946,7 +4964,7 @@ function asArray(value) {
 				},
 				ModisTerraChlorophyll: {
 					options: {
-						variant: 'MODIS_Terra_L2_Chlorophyll_A',
+						variant: 'MODIS_Terra_Chlorophyll_A',
 						format: 'png',
 						maxZoom: 7,
 						opacity: 0.75
@@ -4956,29 +4974,20 @@ function asArray(value) {
 		},
 		NLS: {
 			// NLS maps are copyright National library of Scotland.
-			// http://maps.nls.uk/projects/subscription-api
+			// http://maps.nls.uk/projects/api/index.html
 			// Please contact NLS for anything other than non-commercial low volume usage
 			//
-			// Map sources: Ordnance Survey 1:1m to 1:63K, 1880s-1961
+			// Map sources: Ordnance Survey 1:1m to 1:63K, 1920s-1940s
 			//   z0-9  - 1:1m
 			//  z10-11 - quarter inch (1:253440)
 			//  z12-18 - one inch (1:63360)
-			url: 'https://api.maptiler.com/tiles/{variant}/{z}/{x}/{y}.jpg?key={apikey}',
+			url: 'https://nls-{s}.tileserver.com/nls/{z}/{x}/{y}.jpg',
 			options: {
-				attribution: '<a href="http://maps.nls.uk/projects/subscription-api">National Library of Scotland Historic Maps</a>',
+				attribution: '<a href="http://geo.nls.uk/maps/">National Library of Scotland Historic Maps</a>',
 				bounds: [[49.6, -12], [61.7, 3]],
 				minZoom: 1,
 				maxZoom: 18,
-				apikey: '<insert your api key here>'
-			},
-			variants: {
-				osgb63k1885: 'uk-osgb63k1885',
-				osgb1888: 'uk-osgb1888',
-				osgb10k1888: 'uk-osgb10k1888',
-				osgb1919: 'uk-osgb1919',
-				osgb25k1937: 'uk-osgb25k1937',
-				osgb63k1955: 'uk-osgb63k1955',
-				oslondon1k1893: 'uk-oslondon1k1893'
+				subdomains: '0123',
 			}
 		},
 		JusticeMap: {
@@ -5006,12 +5015,15 @@ function asArray(value) {
 			}
 		},
 		GeoportailFrance: {
-			url: 'https://data.geopf.fr/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE={style}&TILEMATRIXSET=PM&FORMAT={format}&LAYER={variant}&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}',
+			url: 'https://wxs.ign.fr/{apikey}/geoportail/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE={style}&TILEMATRIXSET=PM&FORMAT={format}&LAYER={variant}&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}',
 			options: {
 				attribution: '<a target="_blank" href="https://www.geoportail.gouv.fr/">Geoportail France</a>',
 				bounds: [[-75, -180], [81, 180]],
 				minZoom: 2,
 				maxZoom: 18,
+				// Get your own geoportail apikey here : http://professionnels.ign.fr/ign/contrats/
+				// NB : 'choisirgeoportail' is a demonstration key that comes with no guarantee
+				apikey: 'choisirgeoportail',
 				format: 'image/png',
 				style: 'normal',
 				variant: 'GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2'
@@ -5106,12 +5118,12 @@ function asArray(value) {
 			}
 		},
 		AzureMaps: {
-			url:
-				'https://atlas.microsoft.com/map/tile?api-version={apiVersion}' +
-				'&tilesetId={variant}&x={x}&y={y}&zoom={z}&language={language}' +
+			url: 
+				'https://atlas.microsoft.com/map/tile?api-version={apiVersion}'+
+				'&tilesetId={variant}&x={x}&y={y}&zoom={z}&language={language}'+
 				'&subscription-key={subscriptionKey}',
 			options: {
-				attribution: 'See https://docs.microsoft.com/en-us/rest/api/maps/render-v2/get-map-tile for details.',
+				attribution: 'See https://docs.microsoft.com/en-US/rest/api/maps/renderv2/getmaptilepreview for details.',
 				apiVersion: '2.0',
 				variant: 'microsoft.imagery',
 				subscriptionKey: '<insert your subscription key here>',
@@ -5124,65 +5136,34 @@ function asArray(value) {
 				MicrosoftBaseHybridRoad: 'microsoft.base.hybrid.road',
 				MicrosoftTerraMain: 'microsoft.terra.main',
 				MicrosoftWeatherInfraredMain: {
-					url:
-					'https://atlas.microsoft.com/map/tile?api-version={apiVersion}' +
-					'&tilesetId={variant}&x={x}&y={y}&zoom={z}' +
+					url: 
+					'https://atlas.microsoft.com/map/tile?api-version={apiVersion}'+
+					'&tilesetId={variant}&x={x}&y={y}&zoom={z}'+
 					'&timeStamp={timeStamp}&language={language}' +
 					'&subscription-key={subscriptionKey}',
 					options: {
 						timeStamp: '2021-05-08T09:03:00Z',
-						attribution: 'See https://docs.microsoft.com/en-us/rest/api/maps/render-v2/get-map-tile#uri-parameters for details.',
+						attribution: 'See https://docs.microsoft.com/en-US/rest/api/maps/renderv2/getmaptilepreview#uri-parameters for details.',
 						variant: 'microsoft.weather.infrared.main',
 					},
 				},
 				MicrosoftWeatherRadarMain: {
-					url:
-					'https://atlas.microsoft.com/map/tile?api-version={apiVersion}' +
-					'&tilesetId={variant}&x={x}&y={y}&zoom={z}' +
+					url: 
+					'https://atlas.microsoft.com/map/tile?api-version={apiVersion}'+
+					'&tilesetId={variant}&x={x}&y={y}&zoom={z}'+
 					'&timeStamp={timeStamp}&language={language}' +
 					'&subscription-key={subscriptionKey}',
 					options: {
 						timeStamp: '2021-05-08T09:03:00Z',
-						attribution: 'See https://docs.microsoft.com/en-us/rest/api/maps/render-v2/get-map-tile#uri-parameters for details.',
+						attribution: 'See https://docs.microsoft.com/en-US/rest/api/maps/renderv2/getmaptilepreview#uri-parameters for details.',
 						variant: 'microsoft.weather.radar.main',
 					},
 				}
 			},
-		},
-		SwissFederalGeoportal: {
-			url: 'https://wmts.geo.admin.ch/1.0.0/{variant}/default/current/3857/{z}/{x}/{y}.jpeg',
-			options: {
-				attribution: '&copy; <a href="https://www.swisstopo.admin.ch/">swisstopo</a>',
-				minZoom: 2,
-				maxZoom: 18,
-				bounds: [[45.398181, 5.140242], [48.230651, 11.47757]]
-			},
-			variants: {
-				NationalMapColor: 'ch.swisstopo.pixelkarte-farbe',
-				NationalMapGrey: 'ch.swisstopo.pixelkarte-grau',
-				SWISSIMAGE: {
-					options: {
-						variant: 'ch.swisstopo.swissimage',
-						maxZoom: 19
-					}
-				}
-			}
-		},
-		TopPlusOpen: {
-			url: 'http://sgx.geodatenzentrum.de/wmts_topplus_open/tile/1.0.0/{variant}/default/WEBMERCATOR/{z}/{y}/{x}.png',
-			options: {
-				maxZoom: 18,
-				attribution: 'Map data: &copy; <a href="http://www.govdata.de/dl-de/by-2-0">dl-de/by-2-0</a>',
-				variant: 'web',
-			},
-			variants: {
-				Color: 'web',
-				Grey: 'web_grau'
-			}
 		}
 	};
 
-	L.tileLayer.provider = function(provider, options) {
+	L.tileLayer.provider = function (provider, options) {
 		return new L.TileLayer.Provider(provider, options);
 	};
 
@@ -5197,9 +5178,9 @@ function asArray(value) {
 </head>
 <body style="background-color: white;">
 <div id="htmlwidget_container">
-  <div class="leaflet html-widget html-fill-item" id="htmlwidget-244aaddf2639520a3f5a" style="width:100%;height:400px;"></div>
+  <div class="leaflet html-widget html-fill-item" id="htmlwidget-53afa2d57eb2019986e6" style="width:100%;height:400px;"></div>
 </div>
-<script type="application/json" data-for="htmlwidget-244aaddf2639520a3f5a">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"zoomControl":false},"calls":[{"method":"addTiles","args":["OpenStreetMap.Mapnik",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false}]},{"method":"addProviderTiles","args":["OpenStreetMap.Mapnik",null,"OpenStreetMap.Mapnik",{"errorTileUrl":"","noWrap":false,"opacity":1,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[41.0979,-7.66067,43.2787,2.35498,52.3448,-16.6663,-15.4,48.2452,21.3762,35.4664,20,-14.0853,49.873398,1.928498,-17.4516,21.0639,51.75,58.55,61.972,12.0455,41.850397,46.9304,9.204639999999999,19.6297,18.198,21.5461,43.633654,-5.97212,53.2186,35.3651,-11.1881,34.166825,4.70908,22.3571,23.1916,41.9026,56.826108,35.8884,47.31225,40.0209,-38.2881,-5.73914,38.36,45.77047900000001,-25.0747,36.33,-7.54628,-8.621829999999999,1.30455,69.58199999999999,22.0968,-14.8047,-5.20797,-0.648259,-7.85988,7.34138,-19.5907,51.8439,15.6609,59,28.1947,4.778704,-7.33458,42.9134,-8.25605,14.2038,10.520219,14.192,28.3681,-21.17,2.53616,-10.69948,32.9,-5.984,-12.5104,-20.2513],[238.809,145.669,-1.31622,99.17610000000001,233.311,168.154,166.89,-3.78934,260.7102,276.837,77,288.2337,15.10437,73.54433,145.544,262.0923,19.42,25.82,94.68899999999999,23.6401,43.78613,29.9786,7.49931,204.57,265.0891,103.164,142.46167,142.963,-7.61509,72.05329999999999,309.6508,74.330455,7.44363,84.3922,91.46729999999999,12.4502,24.309118,14.4508,126.55713,116.228,176.541,287.3719,23.13,87.25413566666667,17.9767,250.62,38.958,142.032,30.2242,216.23,260.3566,32.8108,142.177,103.353479,145.751,134.476678,47.1211,18.6255,268.3367,50,102.121,45.152856,109.716,42.5915,37.624,-2.41269,78.82598900000001,100.671,90.1872,184.75,304.2401,295.43848,53.3,16.775,306.5764,27.4096],5,null,["","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],{"interactive":true,"className":"","stroke":false,"color":"#03F","weight":1,"opacity":0.5,"fill":true,"fillColor":["#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6"],"fillOpacity":1},null,null,["<a href='https://glottolog.org/resource/languoid/id/achu1247' target='_blank'>Achumawi<\/a><br>(Achumawi) <br> Kval 2019","<a href='https://glottolog.org/resource/languoid/id/akoy1238' target='_blank'>Akoye<\/a><br>(Akoye) <br> Kval 2019","<a href='https://glottolog.org/resource/languoid/id/basq1248' target='_blank'>Basque<\/a><br>(Baskiska) <br> Kval 2024","<a href='https://glottolog.org/resource/languoid/id/bata1289' target='_blank'>Batak Toba<\/a><br>(Batak Toba) <br> Final 2024","<a href='https://glottolog.org/resource/languoid/id/bell1243' target='_blank'>Bella Coola<\/a><br>(Nuxalk) <br> Kval 2025","<a href='https://glottolog.org/resource/languoid/id/bier1244' target='_blank'>Bierebo<\/a><br>(Bierebo) <br> Kval 2020","<a href='https://glottolog.org/resource/languoid/id/bisl1239' target='_blank'>Bislama<\/a><br>(Bislama) <br> Kval 2018","<a href='https://glottolog.org/resource/languoid/id/bret1244' target='_blank'>Breton<\/a><br>(Bretonska) <br> Kval 2023","<a href='https://glottolog.org/resource/languoid/id/cent2145' target='_blank'>Central Pame<\/a><br>(Centralpame) <br> Kval 2021","<a href='https://glottolog.org/resource/languoid/id/cher1273' target='_blank'>Cherokee<\/a><br>(Cherokesiska) <br> Kval 2020","<a href='https://glottolog.org/resource/languoid/id/clas1258' target='_blank'>Classical Sanskrit<\/a><br>(Sanskrit) <br> Final 2023","<a href='https://glottolog.org/resource/languoid/id/cusc1236' target='_blank'>Cusco Quechua<\/a><br>(Quechua) <br> Kval 2019","<a href='https://glottolog.org/resource/languoid/id/czec1258' target='_blank'>Czech<\/a><br>(Tjeckiska) <br> Final 2022","<a href='https://glottolog.org/resource/languoid/id/dhiv1236' target='_blank'>Dhivehi<\/a><br>(Maldiviska) <br> Kval 2024","<a href='https://glottolog.org/resource/languoid/id/dyir1250' target='_blank'>Dyirbal<\/a><br>(Dyirbal) <br> Kval 2018, Kval 2021","<a href='https://glottolog.org/resource/languoid/id/east2538' target='_blank'>Eastern Huasteca Nahuatl<\/a><br>(Nahuatl) <br> Kval 2018, Final 2021","<a href='https://glottolog.org/resource/languoid/id/east2295' target='_blank'>Eastern Yiddish<\/a><br>(Jiddisch) <br> Kval 2022","<a href='https://glottolog.org/resource/languoid/id/esto1258' target='_blank'>Estonian<\/a><br>(Estniska) <br> Kval 2026","<a href='https://glottolog.org/resource/languoid/id/even1259' target='_blank'>Evenki<\/a><br>(Evenki) <br> Kval 2025","<a href='https://glottolog.org/resource/languoid/id/furr1244' target='_blank'>Fur<\/a><br>(Fur) <br> Kval 2025","<a href='https://glottolog.org/resource/languoid/id/nucl1302' target='_blank'>Georgian<\/a><br>(Georgiska) <br> Kval 2018, Kval 2024","<a href='https://glottolog.org/resource/languoid/id/goth1244' target='_blank'>Gothic<\/a><br>(Gotiska) <br> Kval 2023","<a href='https://glottolog.org/resource/languoid/id/gwan1268' target='_blank'>Gwandara<\/a><br>(Gwandara) <br> Final 2023","<a href='https://glottolog.org/resource/languoid/id/hawa1245' target='_blank'>Hawaiian<\/a><br>(Hawaiiska) <br> Kval 2018","<a href='https://glottolog.org/resource/languoid/id/high1276' target='_blank'>Highland Popoluca<\/a><br>(Nuntajɨyi) <br> Final 2024","<a href='https://glottolog.org/resource/languoid/id/hmon1333' target='_blank'>Hmong Daw<\/a><br>(Hmong daw) <br> Final 2026","<a href='https://glottolog.org/resource/languoid/id/ainu1240' target='_blank'>Hokkaido Ainu<\/a><br>(Ainu) <br> Kval 2022","<a href='https://glottolog.org/resource/languoid/id/huli1244' target='_blank'>Huli<\/a><br>(Huli) <br> Kval 2026","<a href='https://glottolog.org/resource/languoid/id/iris1253' target='_blank'>Irish<\/a><br>(Iriska) <br> Final 2026","<a href='https://glottolog.org/resource/languoid/id/kalk1245' target='_blank'>Kalkoti<\/a><br>(Kalkoti) <br> Final 2024","<a href='https://glottolog.org/resource/languoid/id/kara1500' target='_blank'>Karajá<\/a><br>(Karajá) <br> Kval 2025","<a href='https://glottolog.org/resource/languoid/id/kash1277' target='_blank'>Kashmiri<\/a><br>(Kashmiri) <br> Final 2024","<a href='https://glottolog.org/resource/languoid/id/khan1278' target='_blank'>Khana<\/a><br>(Khana) <br> Kval 2026","<a href='https://glottolog.org/resource/languoid/id/khar1287' target='_blank'>Kharia<\/a><br>(Kharia) <br> Final 2025","<a href='https://glottolog.org/resource/languoid/id/kokb1239' target='_blank'>Kok Borok<\/a><br>(Kokborok) <br> Kval 2025","<a href='https://glottolog.org/resource/languoid/id/lati1261' target='_blank'>Latin<\/a><br>(Latin) <br> Kval 2023","<a href='https://glottolog.org/resource/languoid/id/latv1249' target='_blank'>Latvian<\/a><br>(Lettiska) <br> Final 2022","<a href='https://glottolog.org/resource/languoid/id/malt1254' target='_blank'>Maltese<\/a><br>(Maltesiska) <br> Final 2026","<a href='https://glottolog.org/resource/languoid/id/manc1252' target='_blank'>Manchu<\/a><br>(Manchuriska) <br> Final 2019","<a href='https://glottolog.org/resource/languoid/id/mand1415' target='_blank'>Mandarin Chinese<\/a><br>(Kinesiska) <br> Kval 2023","<a href='https://glottolog.org/resource/languoid/id/maor1246' target='_blank'>Maori<\/a><br>(Māori) <br> Final 2022","<a href='https://glottolog.org/resource/languoid/id/mats1244' target='_blank'>Matsés<\/a><br>(Matsés) <br> Final 2018","<a href='https://glottolog.org/resource/languoid/id/mode1248' target='_blank'>Modern Greek<\/a><br>(Forngrekiska) <br> Kval 2023","<a href='https://glottolog.org/resource/languoid/id/mong1331' target='_blank'>Mongolian<\/a><br>(Mongoliska) <br> Kval 2018","<a href='https://glottolog.org/resource/languoid/id/nama1264' target='_blank'>Nama (Namibia)<\/a><br>(Nama) <br> Kval 2022","<a href='https://glottolog.org/resource/languoid/id/nava1243' target='_blank'>Navajo<\/a><br>(Navajo) <br> Kval 2021","<a href='https://glottolog.org/resource/languoid/id/nden1248' target='_blank'>Ndengereko<\/a><br>(Ndengereko) <br> Kval 2018","<a href='https://glottolog.org/resource/languoid/id/nenn1238' target='_blank'>Nen<\/a><br>(Nen) <br> Kval 2019","<a href='https://glottolog.org/resource/languoid/id/ngit1239' target='_blank'>Ngiti<\/a><br>(Ngiti) <br> Final 2026","<a href='https://glottolog.org/resource/languoid/id/nort2943' target='_blank'>North Alaskan Inupiatun<\/a><br>(Iñupiaq) <br> Final 2021","<a href='https://glottolog.org/resource/languoid/id/nort2984' target='_blank'>Northern Pame<\/a><br>(Nordpame) <br> Kval 2021","<a href='https://glottolog.org/resource/languoid/id/nyan1308' target='_blank'>Nyanja<\/a><br>(Chichewa) <br> Kval 2024","<a href='https://glottolog.org/resource/languoid/id/oksa1245' target='_blank'>Oksapmin<\/a><br>(Oksapmin) <br> Final 2018","<a href='https://glottolog.org/resource/languoid/id/oldm1243' target='_blank'>Old Malay<\/a><br>(Fornmalajiska) <br> Final 2025","<a href='https://glottolog.org/resource/languoid/id/opao1240' target='_blank'>Opao<\/a><br>(Opao) <br> Kval 2023","<a href='https://glottolog.org/resource/languoid/id/pala1344' target='_blank'>Palauan<\/a><br>(Palauiska) <br> Kval 2026","<a href='https://glottolog.org/resource/languoid/id/plat1254' target='_blank'>Plateau Malagasy<\/a><br>(Malagassiska) <br> Kval 2020","<a href='https://glottolog.org/resource/languoid/id/poli1260' target='_blank'>Polish<\/a><br>(Polska) <br> Final 2022","<a href='https://glottolog.org/resource/languoid/id/popt1235' target='_blank'>Popti'<\/a><br>(Jakaltek) <br> Final 2023","<a href='https://glottolog.org/resource/languoid/id/russ1263' target='_blank'>Russian<\/a><br>(Ryska) <br> Final 2022","<a href='https://glottolog.org/resource/languoid/id/sich1238' target='_blank'>Sichuan Yi<\/a><br>(Nuosu) <br> Kval 2023","<a href='https://glottolog.org/resource/languoid/id/soma1255' target='_blank'>Somali<\/a><br>(Somaliska) <br> Kval 2026","<a href='https://glottolog.org/resource/languoid/id/indo1316' target='_blank'>Standard Indonesian<\/a><br>(Indonesiska) <br> Final 2019","<a href='https://glottolog.org/resource/languoid/id/svan1243' target='_blank'>Svan<\/a><br>(Svanetiska) <br> Kval 2019","<a href='https://glottolog.org/resource/languoid/id/swah1253' target='_blank'>Swahili<\/a><br>(Swahili) <br> Kval 2018","<a href='https://glottolog.org/resource/languoid/id/tama1365' target='_blank'>Tamasheq<\/a><br>(Tamashek) <br> Final 2025","<a href='https://glottolog.org/resource/languoid/id/tami1289' target='_blank'>Tamil<\/a><br>(Tamil) <br> Kval 2018","<a href='https://glottolog.org/resource/languoid/id/thai1261' target='_blank'>Thai<\/a><br>(Thai) <br> Final 2021","<a href='https://glottolog.org/resource/languoid/id/tibe1272' target='_blank'>Tibetan<\/a><br>(Tibetanska) <br> Final 2023","<a href='https://glottolog.org/resource/languoid/id/tong1325' target='_blank'>Tonga (Tonga Islands)<\/a><br>(Tonganska) <br> Kval 2024","<a href='https://glottolog.org/resource/languoid/id/trio1238' target='_blank'>Trió<\/a><br>(Tiriyó) <br> Final 2019","<a href='https://glottolog.org/resource/languoid/id/wari1268' target='_blank'>Wari'<\/a><br>(Wari') <br> Final 2026","<a href='https://glottolog.org/resource/languoid/id/west2369' target='_blank'>Western Farsi<\/a><br>(Persiska) <br> Final 2025","<a href='https://glottolog.org/resource/languoid/id/yaka1269' target='_blank'>Yaka-Pelende-Lonzo<\/a><br>(Yaka) <br> Final 2025","<a href='https://glottolog.org/resource/languoid/id/yawa1261' target='_blank'>Yawalapití<\/a><br>(Yawalapití) <br> Final 2024","<a href='https://glottolog.org/resource/languoid/id/nort2795' target='_blank'>Zimbabwean Ndebele<\/a><br>(Ndebele) <br> Final 2022"],null,null,{"interactive":false,"permanent":false,"direction":"right","opacity":1,"offset":[7.5,0],"textsize":"10px","textOnly":true,"style":{"font-size":"15px","font-family":"sans-serif"},"className":"","sticky":true},null]},{"method":"addScaleBar","args":[{"maxWidth":100,"metric":true,"imperial":true,"updateWhenIdle":true,"position":"bottomleft"}]}],"limits":{"lat":[-38.2881,69.58199999999999],"lng":[-7.61509,309.6508]}},"evals":[],"jsHooks":[]}</script>
-<script type="application/htmlwidget-sizing" data-for="htmlwidget-244aaddf2639520a3f5a">{"viewer":{"width":"100%","height":400,"padding":0,"fill":true},"browser":{"width":"100%","height":400,"padding":0,"fill":true}}</script>
+<script type="application/json" data-for="htmlwidget-53afa2d57eb2019986e6">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"zoomControl":false},"calls":[{"method":"addTiles","args":["OpenStreetMap.Mapnik",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false}]},{"method":"addProviderTiles","args":["OpenStreetMap.Mapnik",null,"OpenStreetMap.Mapnik",{"errorTileUrl":"","noWrap":false,"opacity":1,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[41.0979,-7.66067,43.2787,2.35498,52.3448,-16.6663,-15.4,48.2452,21.3762,35.4664,-14.0853,49.873398,1.928498,-17.4516,21.0639,51.75,61.972,12.0455,41.850397,46.9304,9.204639999999999,48.32397,19.6297,18.198,43.633654,20.6189,35.3651,-11.1881,34.166825,22.3571,23.1916,41.9026,56.826108,47.31225,40.0209,-38.2881,-5.73914,38.36,-8.66403,36.33,-7.54628,-8.621829999999999,69.58199999999999,22.0968,-14.8047,-5.20797,-7.85988,-19.5907,51.8439,15.6609,59,28.1947,-7.33458,42.9134,-8.25605,14.2038,10.520219,14.192,28.3681,-21.17,2.53616,32.9,-5.984,-12.5104,-20.2513],[238.809,145.669,-1.31622,99.17610000000001,233.311,168.154,166.89,-3.78934,260.7102,276.837,288.2337,15.10437,73.54433,145.544,262.0923,19.42,94.68899999999999,23.6401,43.78613,29.9786,7.49931,106.28874,204.57,265.0891,142.46167,262.0653,72.05329999999999,309.6508,74.330455,84.3922,91.46729999999999,12.4502,24.309118,126.55713,116.228,176.541,287.3719,23.13,141.706,250.62,38.958,142.032,216.23,260.3566,32.8108,142.177,145.751,47.1211,18.6255,268.3367,50,102.121,109.716,42.5915,37.624,-2.41269,78.82598900000001,100.671,90.1872,184.75,304.2401,53.3,16.775,306.5764,27.4096],5,null,["","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],{"interactive":true,"className":"","stroke":false,"color":"#03F","weight":1,"opacity":0.5,"fill":true,"fillColor":["#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6","#3B8BC6"],"fillOpacity":1},null,null,["<a href='https://glottolog.org/resource/languoid/id/achu1247' target='_blank'>Achumawi<\/a><br>(Achumawi) <br> Kval 2019","<a href='https://glottolog.org/resource/languoid/id/akoy1238' target='_blank'>Akoye<\/a><br>(Akoye) <br> Kval 2019","<a href='https://glottolog.org/resource/languoid/id/basq1248' target='_blank'>Basque<\/a><br>(Baskiska) <br> Kval 2024","<a href='https://glottolog.org/resource/languoid/id/bata1289' target='_blank'>Batak Toba<\/a><br>(Batak Toba) <br> Final 2024","<a href='https://glottolog.org/resource/languoid/id/bell1243' target='_blank'>Bella Coola<\/a><br>(Nuxalk) <br> Kval 2025","<a href='https://glottolog.org/resource/languoid/id/bier1244' target='_blank'>Bierebo<\/a><br>(Bierebo) <br> Kval 2020","<a href='https://glottolog.org/resource/languoid/id/bisl1239' target='_blank'>Bislama<\/a><br>(Bislama) <br> Kval 2018","<a href='https://glottolog.org/resource/languoid/id/bret1244' target='_blank'>Breton<\/a><br>(Bretonska) <br> Kval 2023","<a href='https://glottolog.org/resource/languoid/id/cent2145' target='_blank'>Central Pame<\/a><br>(Centralpame) <br> Kval 2021","<a href='https://glottolog.org/resource/languoid/id/cher1273' target='_blank'>Cherokee<\/a><br>(Cherokesiska) <br> Kval 2020","<a href='https://glottolog.org/resource/languoid/id/cusc1236' target='_blank'>Cusco Quechua<\/a><br>(Quechua) <br> Kval 2019","<a href='https://glottolog.org/resource/languoid/id/czec1258' target='_blank'>Czech<\/a><br>(Tjeckiska) <br> Final 2022","<a href='https://glottolog.org/resource/languoid/id/dhiv1236' target='_blank'>Dhivehi<\/a><br>(Maldiviska) <br> Kval 2024","<a href='https://glottolog.org/resource/languoid/id/dyir1250' target='_blank'>Dyirbal<\/a><br>(Dyirbal) <br> Kval 2018, Kval 2021","<a href='https://glottolog.org/resource/languoid/id/east2538' target='_blank'>Eastern Huasteca Nahuatl<\/a><br>(Nahuatl) <br> Kval 2018, Final 2021","<a href='https://glottolog.org/resource/languoid/id/east2295' target='_blank'>Eastern Yiddish<\/a><br>(Jiddisch) <br> Kval 2022","<a href='https://glottolog.org/resource/languoid/id/even1259' target='_blank'>Evenki<\/a><br>(Evenki) <br> Kval 2025","<a href='https://glottolog.org/resource/languoid/id/furr1244' target='_blank'>Fur<\/a><br>(Fur) <br> Kval 2025","<a href='https://glottolog.org/resource/languoid/id/nucl1302' target='_blank'>Georgian<\/a><br>(Georgiska) <br> Kval 2018, Kval 2024","<a href='https://glottolog.org/resource/languoid/id/goth1244' target='_blank'>Gothic<\/a><br>(Gotiska) <br> Kval 2023","<a href='https://glottolog.org/resource/languoid/id/gwan1268' target='_blank'>Gwandara<\/a><br>(Gwandara) <br> Final 2023","<a href='https://glottolog.org/resource/languoid/id/halh1238' target='_blank'>Halh Mongolian<\/a><br>(Mongoliska) <br> Kval 2018","<a href='https://glottolog.org/resource/languoid/id/hawa1245' target='_blank'>Hawaiian<\/a><br>(Hawaiiska) <br> Kval 2018","<a href='https://glottolog.org/resource/languoid/id/high1276' target='_blank'>Highland Popoluca<\/a><br>(Nuntajɨyi) <br> Final 2024","<a href='https://glottolog.org/resource/languoid/id/ainu1240' target='_blank'>Hokkaido Ainu<\/a><br>(Ainu) <br> Kval 2022","<a href='https://glottolog.org/resource/languoid/id/hueh1236' target='_blank'>Huehuetla Tepehua<\/a><br>(Huehuetla tepehua) <br> Kval 2018","<a href='https://glottolog.org/resource/languoid/id/kalk1245' target='_blank'>Kalkoti<\/a><br>(Kalkoti) <br> Final 2024","<a href='https://glottolog.org/resource/languoid/id/kara1500' target='_blank'>Karajá<\/a><br>(Karajá) <br> Kval 2025","<a href='https://glottolog.org/resource/languoid/id/kash1277' target='_blank'>Kashmiri<\/a><br>(Kashmiri) <br> Final 2024","<a href='https://glottolog.org/resource/languoid/id/khar1287' target='_blank'>Kharia<\/a><br>(Kharia) <br> Final 2025","<a href='https://glottolog.org/resource/languoid/id/kokb1239' target='_blank'>Kok Borok<\/a><br>(Kokborok) <br> Kval 2025","<a href='https://glottolog.org/resource/languoid/id/lati1261' target='_blank'>Latin<\/a><br>(Latin) <br> Kval 2023","<a href='https://glottolog.org/resource/languoid/id/latv1249' target='_blank'>Latvian<\/a><br>(Lettiska) <br> Final 2022","<a href='https://glottolog.org/resource/languoid/id/manc1252' target='_blank'>Manchu<\/a><br>(Manchuriska) <br> Final 2019","<a href='https://glottolog.org/resource/languoid/id/mand1415' target='_blank'>Mandarin Chinese<\/a><br>(Kinesiska) <br> Kval 2023","<a href='https://glottolog.org/resource/languoid/id/maor1246' target='_blank'>Maori<\/a><br>(Māori) <br> Final 2018, Final 2022","<a href='https://glottolog.org/resource/languoid/id/mats1244' target='_blank'>Matsés<\/a><br>(Matsés) <br> Final 2018","<a href='https://glottolog.org/resource/languoid/id/mode1248' target='_blank'>Modern Greek<\/a><br>(Forngrekiska) <br> Kval 2023","<a href='https://glottolog.org/resource/languoid/id/nama1266' target='_blank'>Nama (Papua New Guinea)<\/a><br>(Nama) <br> Kval 2022","<a href='https://glottolog.org/resource/languoid/id/nava1243' target='_blank'>Navajo<\/a><br>(Navajo) <br> Kval 2021","<a href='https://glottolog.org/resource/languoid/id/nden1248' target='_blank'>Ndengereko<\/a><br>(Ndengereko) <br> Kval 2018","<a href='https://glottolog.org/resource/languoid/id/nenn1238' target='_blank'>Nen<\/a><br>(Nen) <br> Kval 2019","<a href='https://glottolog.org/resource/languoid/id/nort2943' target='_blank'>North Alaskan Inupiatun<\/a><br>(Iñupiaq) <br> Final 2021","<a href='https://glottolog.org/resource/languoid/id/nort2984' target='_blank'>Northern Pame<\/a><br>(Nordpame) <br> Kval 2021","<a href='https://glottolog.org/resource/languoid/id/nyan1308' target='_blank'>Nyanja<\/a><br>(Chichewa) <br> Kval 2024","<a href='https://glottolog.org/resource/languoid/id/oksa1245' target='_blank'>Oksapmin<\/a><br>(Oksapmin) <br> Final 2018","<a href='https://glottolog.org/resource/languoid/id/opao1240' target='_blank'>Opao<\/a><br>(Opao) <br> Kval 2023","<a href='https://glottolog.org/resource/languoid/id/plat1254' target='_blank'>Plateau Malagasy<\/a><br>(Malagassiska) <br> Kval 2020","<a href='https://glottolog.org/resource/languoid/id/poli1260' target='_blank'>Polish<\/a><br>(Polska) <br> Final 2022","<a href='https://glottolog.org/resource/languoid/id/popt1235' target='_blank'>Popti'<\/a><br>(Jakaltek) <br> Final 2023","<a href='https://glottolog.org/resource/languoid/id/russ1263' target='_blank'>Russian<\/a><br>(Ryska) <br> Final 2022","<a href='https://glottolog.org/resource/languoid/id/sich1238' target='_blank'>Sichuan Yi<\/a><br>(Nuosu) <br> Kval 2023","<a href='https://glottolog.org/resource/languoid/id/indo1316' target='_blank'>Standard Indonesian<\/a><br>(Indonesiska) <br> Final 2019","<a href='https://glottolog.org/resource/languoid/id/svan1243' target='_blank'>Svan<\/a><br>(Svanetiska) <br> Kval 2019","<a href='https://glottolog.org/resource/languoid/id/swah1253' target='_blank'>Swahili<\/a><br>(Swahili) <br> Kval 2018","<a href='https://glottolog.org/resource/languoid/id/tama1365' target='_blank'>Tamasheq<\/a><br>(Tamashek) <br> Final 2025","<a href='https://glottolog.org/resource/languoid/id/tami1289' target='_blank'>Tamil<\/a><br>(Tamil) <br> Kval 2018","<a href='https://glottolog.org/resource/languoid/id/thai1261' target='_blank'>Thai<\/a><br>(Thai) <br> Final 2021","<a href='https://glottolog.org/resource/languoid/id/tibe1272' target='_blank'>Tibetan<\/a><br>(Tibetanska) <br> Final 2023","<a href='https://glottolog.org/resource/languoid/id/tong1325' target='_blank'>Tonga (Tonga Islands)<\/a><br>(Tonganska) <br> Kval 2024","<a href='https://glottolog.org/resource/languoid/id/trio1238' target='_blank'>Trió<\/a><br>(Tiriyó) <br> Final 2019","<a href='https://glottolog.org/resource/languoid/id/west2369' target='_blank'>Western Farsi<\/a><br>(Persiska) <br> Final 2025","<a href='https://glottolog.org/resource/languoid/id/yaka1269' target='_blank'>Yaka-Pelende-Lonzo<\/a><br>(Yaka) <br> Final 2025","<a href='https://glottolog.org/resource/languoid/id/yawa1261' target='_blank'>Yawalapití<\/a><br>(Yawalapití) <br> Final 2024","<a href='https://glottolog.org/resource/languoid/id/nort2795' target='_blank'>Zimbabwean Ndebele<\/a><br>(Ndebele) <br> Final 2022"],null,null,{"interactive":false,"permanent":false,"direction":"right","opacity":1,"offset":[7.5,0],"textsize":"10px","textOnly":true,"style":{"font-size":"15px","font-family":"sans-serif"},"className":"","sticky":true},null]},{"method":"addScaleBar","args":[{"maxWidth":100,"metric":true,"imperial":true,"updateWhenIdle":true,"position":"bottomleft"}]}],"limits":{"lat":[-38.2881,69.58199999999999],"lng":[-3.78934,309.6508]}},"evals":[],"jsHooks":[]}</script>
+<script type="application/htmlwidget-sizing" data-for="htmlwidget-53afa2d57eb2019986e6">{"viewer":{"width":"100%","height":400,"padding":0,"fill":true},"browser":{"width":"100%","height":400,"padding":0,"fill":true}}</script>
 </body>
 </html>

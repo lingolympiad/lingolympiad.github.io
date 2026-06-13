@@ -15,7 +15,7 @@ Varje vår anordnar vi också ett lingvistikläger tillsammans med Ung Vetenskap
 
 ## Lingolympiadens lagtävling
 
-I år höll Lingolympiaden en lagtävling den 8–9 maj. Uppgifterna och facit finns nu tillgängliga [här](ovning). Resultat kommer snart!
+I år höll Lingolympiaden en lagtävling den 8–9 maj. Resultatet finns nu att läsa [här](2026/06/13/lagtavling-resultat.html)!
 
 <div class="divider"></div>
 

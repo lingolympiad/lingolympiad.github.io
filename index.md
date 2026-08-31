@@ -21,7 +21,7 @@ I år höll Lingolympiaden en lagtävling den 8–9 maj. Resultatet finns nu att
 
 ## Individuella tävlingar
 
-Lingolympiaden 2026 har avslutats! Resultaten finns [här](2026/03/26/final-resultat.html).
+Anmälan till Lingolympiaden 2027 har öppnat! Läs mer och anmäl din skola [här](2026/08/31/kval-anmalan.html).
 
 <div class="hscroll">
 
@@ -30,25 +30,25 @@ Lingolympiaden 2026 har avslutats! Resultaten finns [här](2026/03/26/final-resu
     <th> </th>
     <th>Kvaltävling</th>
     <th>Finaltävling</th>
-    <th>IOL 2026</th>
+    <th>IOL 2027</th>
   </tr>
   <tr>
     <th>Vem</th>
     <td>Alla gymnasieelever som vill</td>
     <td>De 16–20 bästa i kvalet</td>
-    <td>De 4 bästa i finalen</td>
+    <td>De 4-8 bästa i finalen</td>
   </tr>
   <tr>
     <th>Var</th>
     <td>På elevens egen skola</td>
     <td>Stockholm</td>
-    <td>Bukarest, Rumänien</td>
+    <td>Bangkok, Thailand</td>
   </tr>
   <tr>
     <th>När</th>
-    <td>5 november 2025</td>
-    <td>20–22 mars 2026</td>
-    <td>juli 2026</td>
+    <td>11 november 2026</td>
+    <td>våren 2027</td>
+    <td>21-28 juli 2027</td>
   </tr>
 </table>
 

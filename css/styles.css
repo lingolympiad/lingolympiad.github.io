@@ -177,10 +177,10 @@ ul li {
 /* DESKTOP NAVIGATION MENU */
 @media all and (min-width: 1000px) {
   #navbar {
-    align-items: flex-start;
+    align-items: flex-end;
     flex-wrap: nowrap;
     background: none;
-    justify-content: flex-start;
+    justify-content: flex-end;
   }
   #logo {
     order: 0;

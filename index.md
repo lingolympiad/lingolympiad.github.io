@@ -13,15 +13,9 @@ Varje vår anordnar vi också ett lingvistikläger tillsammans med Ung Vetenskap
 
 <div class="divider"></div>
 
-## Lingolympiadens lagtävling
-
-I år höll Lingolympiaden en lagtävling den 8–9 maj. Resultatet finns nu att läsa [här](2026/06/13/lagtavling-resultat.html)!
-
-<div class="divider"></div>
-
 ## Individuella tävlingar
 
-Anmälan till Lingolympiaden 2027 har öppnat! Läs mer och anmäl din skola [här](2026/08/31/kval-anmalan.html).
+**Anmälan till Lingolympiaden 2027 har öppnat!** Läs mer och anmäl din skola [här](2026/08/31/kval-anmalan.html).
 
 <div class="hscroll">
 
@@ -59,6 +53,12 @@ Vill du veta när anmälan till nästa kvaltävling eller lingvistikläger öppn
 Följ oss på [Facebook](https://www.facebook.com/lingolympiaden/) och [Instagram](https://www.instagram.com/lingolympiaden/) för regelbundna uppdateringar om Lingolympiaden.
 
 Gå med i vår [Discord-server](https://discord.gg/2j4kKSXkU7) för att diskutera Lingolympiaden med arrangörerna och andra deltagare.
+
+<div class="divider"></div>
+
+## Lingolympiadens lagtävling
+
+I år höll Lingolympiaden en lagtävling den 8–9 maj. Resultatet finns nu att läsa [här](2026/06/13/lagtavling-resultat.html)!
 
 <div class="divider"></div>
 
